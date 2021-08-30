@@ -9,6 +9,8 @@ namespace Zork
             Console.WriteLine("Welcome to Zork!");
 
             string inputString = Console.ReadLine().Trim().ToUpper();
+            Commands command = ToCommand(inputString);
+
             if(inputString == "QUIT")
             {
                 Console.WriteLine("Thank you for playing.");
@@ -21,6 +23,24 @@ namespace Zork
             {
                 Console.WriteLine("Unrecognized command.");
             }
+
+        }
+
+        static Commands ToCommand(string commandString)
+        {
+            Commands command;
+
+            if(commandString = "QUIT")
+            {
+                command = Commands.QUIT;
+            }
+            else
+            {
+                command = Commands.UNKNOWN;
+            }
+
+            return command;
+
         }
     }
 }
