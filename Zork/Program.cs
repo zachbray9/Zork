@@ -4,16 +4,13 @@ namespace Zork
 {
     class Program
     {
-        private static string[] Rooms = new string[] { "Forest", "West of House", "Behind House", "Clearing", "Canyon View" };
-        private static int locationColumn = 1;
+        private static readonly string[,] Rooms = {
+            {"Rocky Trail", "South of House", "Canyon View" },
+            {"Forest", "West of House", "Behind House" },
+            {"Dense Woods", "North of House", "Clearing" }
+        };
 
-        private static string Location
-        {
-            get
-            {
-                return Rooms[locationColumn];
-            }
-        }
+        private static (int row, int column) Location = (1, 1);
 
         static void Main(string[] args)
         {
@@ -23,7 +20,7 @@ namespace Zork
             Commands command = Commands.UNKNOWN;
             while(command != Commands.QUIT)
             {
-                Console.Write($"{Location}\n> ");
+                Console.Write($"{Rooms[Location.row, Location.column]}\n> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
                 string outputString;
@@ -67,17 +64,23 @@ namespace Zork
 
             switch (command)
             {
-                case Commands.NORTH:
-                case Commands.SOUTH:
-                    break;
-
-                case Commands.EAST when locationColumn < Rooms.Length - 1:
-                    locationColumn++;
+                case Commands.NORTH when Location.row < Rooms.GetLength(0) - 1:
+                    Location.row++;
                     didMove = true;
                     break;
 
-                case Commands.WEST when locationColumn > 0:
-                    locationColumn--;
+                case Commands.SOUTH when Location.row > 0:
+                    Location.row--;
+                    didMove = true;
+                    break;
+
+                case Commands.EAST when Location.column < Rooms.GetLength(1) - 1:
+                    Location.column++;
+                    didMove = true;
+                    break;
+
+                case Commands.WEST when Location.column > 0:
+                    Location.column--;
                     didMove = true;
                     break;
             }
