@@ -18,8 +18,7 @@ namespace Zork
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)
         {
-            Player = new Player(World, StartingLocation);                                    //World, StartingLocation
-            //Player.CurrentRoom = World.RoomsByName[StartingLocation];
+            Player = new Player(World, StartingLocation);
         }
 
         public void Run()
@@ -36,7 +35,7 @@ namespace Zork
                     Console.WriteLine(Player.CurrentRoom.Description);
                     Player.PreviousRoom = Player.CurrentRoom;
                 }
-                Console.Write("> ");
+                Console.Write("\n> ");
 
                 command = ToCommand(Console.ReadLine().Trim());
 
@@ -55,7 +54,8 @@ namespace Zork
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        outputString = Player.Move((Directions)command) ? $"You moved {command}." : "The way is shut!";
+                        Directions direction = Enum.Parse<Directions>(command.ToString(), true);
+                        outputString = Player.Move(direction) ? $"You moved {command}." : "The way is shut!";
                         break;
 
                     default:
@@ -71,5 +71,6 @@ namespace Zork
         {
             return Enum.TryParse<Commands>(commandString, ignoreCase: true, out Commands command) ? command : Commands.UNKNOWN;
         }
+
     }
 }
