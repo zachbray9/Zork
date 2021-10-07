@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Runtime.Serialization;
 
 namespace Zork
 {
-    class Game
+    public class Game
     {
-        public World World { get; set; }
+        public World World { get; private set; }
 
-        public string StartingLocation { get; set; }
+        //public string StartingLocation { get; set; }
 
         public string WelcomeMessage { get; set; }
 
@@ -15,32 +17,37 @@ namespace Zork
 
         public Player Player { get; private set; }
 
-        [OnDeserialized]
-        private void OnDeserialized(StreamingContext context)
+        private bool IsRunning { get; set; }
+
+        public Game(World world, Player player)
         {
-            Player = new Player(World, StartingLocation);                                    //World, StartingLocation
-            //Player.CurrentRoom = World.RoomsByName[StartingLocation];
+            World = world;
+            Player = player;
         }
+
 
         public void Run()
         {
+            IsRunning = true;
+            Room PreviousRoom = null;
+            
             Console.WriteLine(WelcomeMessage);
 
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
 
-                Console.WriteLine(Player.CurrentRoom);
-                if (Player.PreviousRoom != Player.CurrentRoom)
+                Console.WriteLine(Player.Location);
+                if (PreviousRoom != Player.Location)
                 {
-                    Console.WriteLine(Player.CurrentRoom.Description);
-                    Player.PreviousRoom = Player.CurrentRoom;
+                    Console.WriteLine(Player.Location.Description);
+                    PreviousRoom = Player.Location;
                 }
                 Console.Write("> ");
 
                 command = ToCommand(Console.ReadLine().Trim());
 
-                string outputString;
+                string outputString = null;                                                                        //made output string null
                 switch (command)
                 {
                     case Commands.QUIT:
@@ -48,14 +55,18 @@ namespace Zork
                         break;
 
                     case Commands.LOOK:
-                        outputString = Player.CurrentRoom.Description;
+                        outputString = Player.Location.Description;
                         break;
 
                     case Commands.NORTH:
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        outputString = Player.Move((Directions)command) ? $"You moved {command}." : "The way is shut!";
+                        Directions direction = Enum.Parse<Directions>(command.ToString(), true);
+                        if(Player.Move(direction) == false)
+                        {
+                            outputString = "The way is shut!";
+                        }
                         break;
 
                     default:
@@ -70,6 +81,15 @@ namespace Zork
         static Commands ToCommand(string commandString)
         {
             return Enum.TryParse<Commands>(commandString, ignoreCase: true, out Commands command) ? command : Commands.UNKNOWN;
+        }
+
+
+        public static Game Load(string fileName)
+        {
+            Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(fileName));
+            game.Player = game.World.SpawnPlayer();
+
+            return game;
         }
     }
 }
