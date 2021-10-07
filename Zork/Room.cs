@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Zork
 {
@@ -8,7 +7,12 @@ namespace Zork
     {
         public string Name { get; }
         public string Description { get; set; }
-        public string[] Neighbors { get; set; }
+
+        [JsonIgnore]
+        public Dictionary<Directions, Room> Neighbors { get; set; }
+
+        [JsonProperty(PropertyName = "Neighbors")]
+        public Dictionary<Directions, string> NeighborNames { get; set; }
 
         public Room(string name, string description = "")
         {
@@ -19,6 +23,13 @@ namespace Zork
         //Overrides the ToString method that is inherited from System.Object when trying to use Console.Write(CurrentRoom) because CurrentRoom isn't a string.
         public override string ToString() => Name;
 
-        public override int GetHashCode() => Name.GetHashCode();
+        public void UpdateNeighbors(World world)
+        {
+            Neighbors = new Dictionary<Directions, Room>();
+            foreach(var(direction, name) in NeighborNames)
+            {
+                Neighbors.Add(direction, world.RoomsByName[name]);
+            }
+        }
     }
 }
