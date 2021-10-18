@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Zork
 {
-    class Player
+    public class Player
     {
         public World World { get; }
 

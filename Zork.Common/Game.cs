@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Zork
 {
-    class Game
+    public class Game
     {
         public World World { get; set; }
 
@@ -54,7 +54,7 @@ namespace Zork
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        Directions direction = Enum.Parse<Directions>(command.ToString(), true);
+                        Directions direction = (Directions)command;
                         outputString = Player.Move(direction) ? $"You moved {command}." : "The way is shut!";
                         break;
 
