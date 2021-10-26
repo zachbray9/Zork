@@ -36,7 +36,12 @@ namespace Zork.Builder
             this.fileSeparatorStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.roomsGroupBox = new System.Windows.Forms.GroupBox();
+            this.roomsListBox = new System.Windows.Forms.ListBox();
+            this.addRoomButton = new System.Windows.Forms.Button();
+            this.deleteRoomButton = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
+            this.roomsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -59,6 +64,7 @@ namespace Zork.Builder
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
@@ -90,7 +96,45 @@ namespace Zork.Builder
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "JSON Files|*.json";
+            // 
+            // roomsGroupBox
+            // 
+            this.roomsGroupBox.Controls.Add(this.deleteRoomButton);
+            this.roomsGroupBox.Controls.Add(this.addRoomButton);
+            this.roomsGroupBox.Controls.Add(this.roomsListBox);
+            this.roomsGroupBox.Location = new System.Drawing.Point(12, 27);
+            this.roomsGroupBox.Name = "roomsGroupBox";
+            this.roomsGroupBox.Size = new System.Drawing.Size(200, 411);
+            this.roomsGroupBox.TabIndex = 1;
+            this.roomsGroupBox.TabStop = false;
+            this.roomsGroupBox.Text = "Rooms";
+            // 
+            // roomsListBox
+            // 
+            this.roomsListBox.FormattingEnabled = true;
+            this.roomsListBox.Location = new System.Drawing.Point(6, 19);
+            this.roomsListBox.Name = "roomsListBox";
+            this.roomsListBox.Size = new System.Drawing.Size(188, 355);
+            this.roomsListBox.TabIndex = 0;
+            // 
+            // addRoomButton
+            // 
+            this.addRoomButton.Location = new System.Drawing.Point(23, 380);
+            this.addRoomButton.Name = "addRoomButton";
+            this.addRoomButton.Size = new System.Drawing.Size(75, 23);
+            this.addRoomButton.TabIndex = 1;
+            this.addRoomButton.Text = "Add";
+            this.addRoomButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteRoomButton
+            // 
+            this.deleteRoomButton.Location = new System.Drawing.Point(104, 380);
+            this.deleteRoomButton.Name = "deleteRoomButton";
+            this.deleteRoomButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteRoomButton.TabIndex = 2;
+            this.deleteRoomButton.Text = "Delete";
+            this.deleteRoomButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -98,6 +142,7 @@ namespace Zork.Builder
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.roomsGroupBox);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
@@ -105,6 +150,7 @@ namespace Zork.Builder
             this.Load += new System.EventHandler(this.Form1_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            this.roomsGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +165,10 @@ namespace Zork.Builder
         private System.Windows.Forms.ToolStripSeparator fileSeparatorStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.GroupBox roomsGroupBox;
+        private System.Windows.Forms.Button deleteRoomButton;
+        private System.Windows.Forms.Button addRoomButton;
+        private System.Windows.Forms.ListBox roomsListBox;
     }
 }
 
