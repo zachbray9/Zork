@@ -31,6 +31,11 @@ namespace Zork.Builder
             }
         }
 
+        public void SaveWorld()
+        {
+
+        }
+
         private World _world;
     }
 }

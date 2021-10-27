@@ -13,7 +13,7 @@ namespace Zork.Builder
         public MainForm()
         {
             InitializeComponent();
-            ViewModel = new WorldViewModel;
+            ViewModel = new WorldViewModel();
         }
 
         private void Form1_Load(object sender, EventArgs e)
