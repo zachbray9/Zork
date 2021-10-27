@@ -151,6 +151,7 @@ namespace Zork.Builder
             this.roomsListBox.Name = "roomsListBox";
             this.roomsListBox.Size = new System.Drawing.Size(188, 355);
             this.roomsListBox.TabIndex = 0;
+            this.roomsListBox.SelectedIndexChanged += new System.EventHandler(this.roomsListBox_SelectedIndexChanged);
             // 
             // roomPropertiesGroupBox
             // 

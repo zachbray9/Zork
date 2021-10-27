@@ -39,5 +39,10 @@ namespace Zork.Builder
         {
 
         }
+
+        private void roomsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
