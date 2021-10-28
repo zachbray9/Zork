@@ -316,6 +316,10 @@ namespace Zork.Builder
             this.roomNameLabel.TabIndex = 0;
             this.roomNameLabel.Text = "&Name";
             // 
+            // roomsBindingSource
+            // 
+            this.roomsBindingSource.DataSource = typeof(Zork.Room);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

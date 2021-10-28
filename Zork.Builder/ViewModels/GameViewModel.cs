@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Zork.Builder
 {
-    public class WorldViewModel : INotifyPropertyChanged
+    public class GameViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public BindingList<Room> Rooms { get; set; }
 
-        public World World
+        public Game Game
         {
 
             set
             {
-                if(_world != value)
+                if(_game != value)
                 {
-                    _world = value;
-                    if(_world != null)
+                    _game = value;
+                    if(_game != null)
                     {
-                        Rooms = new BindingList<Room>(_world.Rooms);
+                        Rooms = new BindingList<Room>(_game.World.Rooms);
                     }
                     else
                     {
@@ -33,11 +33,11 @@ namespace Zork.Builder
             }
         }
 
-        public void SaveWorld()
+        public void SaveGame()
         {
 
         }
 
-        private World _world;
+        private Game _game;
     }
 }

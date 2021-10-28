@@ -8,12 +8,12 @@ namespace Zork.Builder
 {
     public partial class MainForm : Form
     {
-        internal WorldViewModel ViewModel { get; private set; }
+        internal GameViewModel ViewModel { get; private set; }
 
         public MainForm()
         {
             InitializeComponent();
-            ViewModel = new WorldViewModel();
+            ViewModel = new GameViewModel();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace Zork.Builder
                 try
                 {
                     string jsonString = File.ReadAllText(openFileDialog.FileName);
-                    ViewModel.World = JsonConvert.DeserializeObject<World>(jsonString);
+                    ViewModel.Game = JsonConvert.DeserializeObject<Game>(jsonString);
                 }
                 catch(Exception ex)
                 {
