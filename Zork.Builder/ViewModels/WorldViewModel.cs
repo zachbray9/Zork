@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Zork.Builder
 {
-    public class WorldViewModel
+    public class WorldViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public BindingList<Room> Rooms { get; set; }
 
         public World World

@@ -30,8 +30,15 @@ namespace Zork.Builder
         {
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string jsonString = File.ReadAllText(openFileDialog.FileName);
-                ViewModel.World = JsonConvert.DeserializeObject<World>(jsonString);
+                try
+                {
+                    string jsonString = File.ReadAllText(openFileDialog.FileName);
+                    ViewModel.World = JsonConvert.DeserializeObject<World>(jsonString);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Zork Builder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -43,6 +50,16 @@ namespace Zork.Builder
         private void roomsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void addRoomButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not yet implemented.");
+        }
+
+        private void deleteRoomButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not yet implemented.");
         }
     }
 }
