@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Zork.Common;
 
 namespace Zork.Builder
 {
@@ -14,10 +15,10 @@ namespace Zork.Builder
 
             set
             {
-                if(_game != value)
+                if (_game != value)
                 {
                     _game = value;
-                    if(_game != null)
+                    if (_game != null)
                     {
                         Rooms = new BindingList<Room>(_game.World.Rooms);
                     }

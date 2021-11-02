@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace Zork
+namespace Zork.Common
 {
-    public class Game
+    public class Game : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public World World { get; set; }
 
         public string StartingLocation { get; set; }
@@ -14,6 +17,7 @@ namespace Zork
         public string ExitMessage { get; set; }
 
         public Player Player { get; private set; }
+
 
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)

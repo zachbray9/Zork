@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using Zork.Common;
 using Newtonsoft.Json;
 
 namespace Zork.Builder
@@ -31,8 +32,7 @@ namespace Zork.Builder
             {
                 try
                 {
-                    string jsonString = File.ReadAllText(openFileDialog.FileName);
-                    ViewModel.Game = JsonConvert.DeserializeObject<Game>(jsonString);
+                    ViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
                 }
                 catch(Exception ex)
                 {

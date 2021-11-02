@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace Zork
+namespace Zork.Common
 {
-    public class Room
+    public class Room : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string Name { get; }
         public string Description { get; set; }
 
@@ -19,6 +22,7 @@ namespace Zork
             Name = name;
             Description = description;
         }
+
 
         //Overrides the ToString method that is inherited from System.Object when trying to use Console.Write(CurrentRoom) because CurrentRoom isn't a string.
         public override string ToString() => Name;

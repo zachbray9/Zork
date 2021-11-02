@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace Zork
+namespace Zork.Common
 {
-    public class World
+    public class World : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Room[] Rooms { get; set; }
 
         public Dictionary<string, Room> RoomsByName { get; private set; }
+
 
         [OnDeserialized]
         public void OnDeserialized(StreamingContext context)
