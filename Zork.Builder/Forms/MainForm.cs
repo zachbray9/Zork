@@ -14,6 +14,7 @@ namespace Zork.Builder
         {
             InitializeComponent();
             ViewModel = new GameViewModel();
+            gameViewModelBindingSource.DataSource = ViewModel;
         }
 
         private void Form1_Load(object sender, EventArgs e)
