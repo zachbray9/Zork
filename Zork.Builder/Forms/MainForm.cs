@@ -10,11 +10,53 @@ namespace Zork.Builder
     {
         internal GameViewModel ViewModel { get; private set; }
 
+        private bool isWorldLoaded
+        {
+            get
+            {
+                return ViewModel.isWorldLoaded;
+            }
+            set
+            {
+                ViewModel.isWorldLoaded = value;
+
+                foreach(var control in worldDependentControls)
+                {
+                    control.Enabled = ViewModel.isWorldLoaded;
+                }
+
+                foreach (var menuItem in worldDependentMenuItems)
+                {
+                    menuItem.Enabled = ViewModel.isWorldLoaded;
+                }
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
             ViewModel = new GameViewModel();
             gameViewModelBindingSource.DataSource = ViewModel;
+
+            worldDependentControls = new Control[]
+            {
+                addRoomButton,
+                deleteRoomButton,
+                roomNameTextBox,
+                roomDescriptionTextBox,
+                northComboBox,
+                southComboBox,
+                eastComboBox,
+                westComboBox
+            };
+
+            worldDependentMenuItems = new ToolStripMenuItem[]
+            {
+                saveToolStripMenuItem,
+                saveAsToolStripMenuItem
+            };
+
+            isWorldLoaded = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,6 +76,7 @@ namespace Zork.Builder
                 try
                 {
                     ViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
+                    isWorldLoaded = true;
                 }
                 catch(Exception ex)
                 {
@@ -61,5 +104,8 @@ namespace Zork.Builder
         {
             MessageBox.Show("Not yet implemented.");
         }
+
+        private Control[] worldDependentControls;
+        private ToolStripMenuItem[] worldDependentMenuItems;
     }
 }

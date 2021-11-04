@@ -8,6 +8,8 @@ namespace Zork.Builder
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public bool isWorldLoaded { get; set; }
+
         public BindingList<Room> Rooms { get; set; }
 
         public Game Game
