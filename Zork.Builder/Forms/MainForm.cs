@@ -47,7 +47,10 @@ namespace Zork.Builder
                 northComboBox,
                 southComboBox,
                 eastComboBox,
-                westComboBox
+                westComboBox,
+                welcomeMessageTextBox,
+                exitMessageTextBox,
+                startingLocationComboBox
             };
 
             worldDependentMenuItems = new ToolStripMenuItem[]

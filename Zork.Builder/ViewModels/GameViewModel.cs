@@ -12,12 +12,21 @@ namespace Zork.Builder
 
         public bool isWorldLoaded { get; set; }
 
+        
         public string fileName { get; set; }
 
-        public BindingList<Room> Rooms { get; set; }
+        //public BindingList<Room> Rooms { get; set; }
+
+        public string WelcomeMessage { get; set; }
+        public string ExitMessage { get; set; }
+        public string StartingLocation { get; set; }
 
         public Game Game
         {
+            get
+            {
+                return _game;
+            }
 
             set
             {
@@ -26,11 +35,17 @@ namespace Zork.Builder
                     _game = value;
                     if (_game != null)
                     {
-                        Rooms = new BindingList<Room>(_game.World.Rooms);
+                        //Rooms = new BindingList<Room>(_game.World.Rooms);
+                        WelcomeMessage = _game.WelcomeMessage;
+                        ExitMessage = _game.ExitMessage;
+                        StartingLocation = _game.StartingLocation;
                     }
                     else
                     {
-                        Rooms = new BindingList<Room>(Array.Empty<Room>());
+                        //Rooms = new BindingList<Room>(Array.Empty<Room>());
+                        WelcomeMessage = "Welcome to Zork!";
+                        ExitMessage = "Thank you for playing!";
+                        StartingLocation = "West of House";
                     }
                 }
             }
