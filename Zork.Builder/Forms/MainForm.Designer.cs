@@ -60,6 +60,7 @@ namespace Zork.Builder
             this.roomDescriptionLabel = new System.Windows.Forms.Label();
             this.roomNameTextBox = new System.Windows.Forms.TextBox();
             this.roomNameLabel = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.mainMenuStrip.SuspendLayout();
             this.roomsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
@@ -119,12 +120,14 @@ namespace Zork.Builder
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitFileSeparatorStripMenuItem
             // 
@@ -297,7 +300,7 @@ namespace Zork.Builder
             // 
             // roomDescriptionTextBox
             // 
-            this.roomDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomsBindingSource, "Description", true));
+            this.roomDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomsBindingSource, "Description", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.roomDescriptionTextBox.Location = new System.Drawing.Point(12, 121);
             this.roomDescriptionTextBox.Name = "roomDescriptionTextBox";
             this.roomDescriptionTextBox.Size = new System.Drawing.Size(535, 20);
@@ -314,7 +317,7 @@ namespace Zork.Builder
             // 
             // roomNameTextBox
             // 
-            this.roomNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomsBindingSource, "Name", true));
+            this.roomNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomsBindingSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.roomNameTextBox.Location = new System.Drawing.Point(9, 54);
             this.roomNameTextBox.Name = "roomNameTextBox";
             this.roomNameTextBox.Size = new System.Drawing.Size(538, 20);
@@ -328,6 +331,11 @@ namespace Zork.Builder
             this.roomNameLabel.Size = new System.Drawing.Size(35, 13);
             this.roomNameLabel.TabIndex = 0;
             this.roomNameLabel.Text = "&Name";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "World files (*.json)|*.json";
+            this.saveFileDialog.Title = "Save world file";
             // 
             // MainForm
             // 
@@ -391,6 +399,7 @@ namespace Zork.Builder
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.BindingSource roomsBindingSource;
         private System.Windows.Forms.BindingSource gameViewModelBindingSource;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

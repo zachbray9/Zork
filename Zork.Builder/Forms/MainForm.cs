@@ -76,6 +76,7 @@ namespace Zork.Builder
                 try
                 {
                     ViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
+                    ViewModel.fileName = openFileDialog.FileName;
                     isWorldLoaded = true;
                 }
                 catch(Exception ex)
@@ -107,5 +108,19 @@ namespace Zork.Builder
 
         private Control[] worldDependentControls;
         private ToolStripMenuItem[] worldDependentMenuItems;
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewModel.SaveGame();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ViewModel.fileName = saveFileDialog.FileName;
+                ViewModel.SaveGame();
+            }
+        }
     }
 }
