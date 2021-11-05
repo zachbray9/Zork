@@ -21,12 +21,17 @@ namespace Zork.Builder
         public string ExitMessage { get; set; }
         public string StartingLocation { get; set; }
 
+        public GameViewModel(Game game = null)
+        {
+            Game = game;
+        }
+
         public Game Game
         {
-            get
-            {
-                return _game;
-            }
+            //get
+            //{
+            //    return _game;
+            //}
 
             set
             {

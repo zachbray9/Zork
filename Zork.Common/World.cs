@@ -12,7 +12,7 @@ namespace Zork.Common
         public Room[] Rooms { get; set; }
 
         [JsonIgnore]  //added because saving in zork builder was serializing the RoomsByName list
-        public Dictionary<string, Room> RoomsByName { get; private set; }
+        public Dictionary<string, Room> RoomsByName { get; private set; }  
 
 
         [OnDeserialized]

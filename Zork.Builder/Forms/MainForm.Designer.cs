@@ -45,8 +45,6 @@ namespace Zork.Builder.Forms
             this.addRoomButton = new System.Windows.Forms.Button();
             this.roomsListBox = new System.Windows.Forms.ListBox();
             this.roomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.worldBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomPropertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.roomNeighborsGroupBox = new System.Windows.Forms.GroupBox();
@@ -69,14 +67,14 @@ namespace Zork.Builder.Forms
             this.exitMessageTextBox = new System.Windows.Forms.TextBox();
             this.startingLocationLabel = new System.Windows.Forms.Label();
             this.startingLocationComboBox = new System.Windows.Forms.ComboBox();
+            this.gameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.roomsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.worldBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gameBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             this.roomPropertiesGroupBox.SuspendLayout();
             this.roomNeighborsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -203,17 +201,7 @@ namespace Zork.Builder.Forms
             // roomsBindingSource
             // 
             this.roomsBindingSource.DataMember = "Rooms";
-            this.roomsBindingSource.DataSource = this.worldBindingSource;
-            // 
-            // worldBindingSource
-            // 
-            this.worldBindingSource.DataMember = "World";
-            this.worldBindingSource.DataSource = this.gameBindingSource;
-            // 
-            // gameBindingSource
-            // 
-            this.gameBindingSource.DataMember = "Game";
-            this.gameBindingSource.DataSource = this.gameViewModelBindingSource;
+            this.roomsBindingSource.DataSource = this.gameViewModelBindingSource;
             // 
             // gameViewModelBindingSource
             // 
@@ -342,6 +330,7 @@ namespace Zork.Builder.Forms
             this.roomNameTextBox.Name = "roomNameTextBox";
             this.roomNameTextBox.Size = new System.Drawing.Size(538, 20);
             this.roomNameTextBox.TabIndex = 1;
+            this.roomNameTextBox.TextChanged += new System.EventHandler(this.roomNameTextBox_TextChanged);
             // 
             // roomNameLabel
             // 
@@ -377,7 +366,7 @@ namespace Zork.Builder.Forms
             // 
             // welcomeMessageTextBox
             // 
-            this.welcomeMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameBindingSource, "WelcomeMessage", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.welcomeMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "WelcomeMessage", true));
             this.welcomeMessageTextBox.Location = new System.Drawing.Point(112, 25);
             this.welcomeMessageTextBox.Name = "welcomeMessageTextBox";
             this.welcomeMessageTextBox.Size = new System.Drawing.Size(287, 20);
@@ -385,7 +374,7 @@ namespace Zork.Builder.Forms
             // 
             // exitMessageTextBox
             // 
-            this.exitMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameBindingSource, "ExitMessage", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.exitMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "ExitMessage", true));
             this.exitMessageTextBox.Location = new System.Drawing.Point(493, 28);
             this.exitMessageTextBox.Name = "exitMessageTextBox";
             this.exitMessageTextBox.Size = new System.Drawing.Size(287, 20);
@@ -402,9 +391,6 @@ namespace Zork.Builder.Forms
             // 
             // startingLocationComboBox
             // 
-            this.startingLocationComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameBindingSource, "StartingLocation", true));
-            this.startingLocationComboBox.DataSource = this.gameBindingSource;
-            this.startingLocationComboBox.DisplayMember = "StartingLocation";
             this.startingLocationComboBox.FormattingEnabled = true;
             this.startingLocationComboBox.Location = new System.Drawing.Point(112, 69);
             this.startingLocationComboBox.Name = "startingLocationComboBox";
@@ -437,13 +423,12 @@ namespace Zork.Builder.Forms
             this.mainMenuStrip.PerformLayout();
             this.roomsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.worldBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gameBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
             this.roomPropertiesGroupBox.ResumeLayout(false);
             this.roomPropertiesGroupBox.PerformLayout();
             this.roomNeighborsGroupBox.ResumeLayout(false);
             this.roomNeighborsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,7 +473,6 @@ namespace Zork.Builder.Forms
         private System.Windows.Forms.Label startingLocationLabel;
         private System.Windows.Forms.ComboBox startingLocationComboBox;
         private System.Windows.Forms.BindingSource roomsBindingSource;
-        private System.Windows.Forms.BindingSource worldBindingSource;
         private System.Windows.Forms.BindingSource gameBindingSource;
     }
 }

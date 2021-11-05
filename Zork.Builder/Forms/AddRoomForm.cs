@@ -20,6 +20,7 @@ namespace Zork.Builder
         public AddRoomForm()
         {
             InitializeComponent();
+            OkButton.Enabled = false;
         }
         private void AddRoomForm_Load(object sender, EventArgs e)
         {

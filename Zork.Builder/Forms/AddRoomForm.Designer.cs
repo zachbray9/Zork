@@ -63,6 +63,7 @@
             // 
             // OkButton
             // 
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OkButton.Enabled = false;
             this.OkButton.Location = new System.Drawing.Point(150, 55);
             this.OkButton.Name = "OkButton";
@@ -76,6 +77,7 @@
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(323, 100);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
@@ -85,6 +87,7 @@
             this.MinimizeBox = false;
             this.Name = "AddRoomForm";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Room";
             this.Load += new System.EventHandler(this.AddRoomForm_Load);
             this.ResumeLayout(false);

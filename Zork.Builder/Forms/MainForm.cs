@@ -106,7 +106,7 @@ namespace Zork.Builder.Forms
                 if (addRoomForm.ShowDialog() == DialogResult.OK)
                 {
                     Room room = new Room(addRoomForm.RoomName, ""); //{ Name = addRoomForm.RoomName };
-                    
+                    ViewModel.Rooms.Add(room);
 
                 }
             }
@@ -132,6 +132,11 @@ namespace Zork.Builder.Forms
                 ViewModel.fileName = saveFileDialog.FileName;
                 ViewModel.SaveGame();
             }
+        }
+
+        private void roomNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
