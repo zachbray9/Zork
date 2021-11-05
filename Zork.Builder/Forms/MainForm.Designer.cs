@@ -67,14 +67,12 @@ namespace Zork.Builder.Forms
             this.exitMessageTextBox = new System.Windows.Forms.TextBox();
             this.startingLocationLabel = new System.Windows.Forms.Label();
             this.startingLocationComboBox = new System.Windows.Forms.ComboBox();
-            this.gameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.roomsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             this.roomPropertiesGroupBox.SuspendLayout();
             this.roomNeighborsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gameBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -200,11 +198,13 @@ namespace Zork.Builder.Forms
             // 
             // roomsBindingSource
             // 
+            this.roomsBindingSource.AllowNew = true;
             this.roomsBindingSource.DataMember = "Rooms";
             this.roomsBindingSource.DataSource = this.gameViewModelBindingSource;
             // 
             // gameViewModelBindingSource
             // 
+            this.gameViewModelBindingSource.AllowNew = true;
             this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.GameViewModel);
             // 
             // roomPropertiesGroupBox
@@ -391,11 +391,15 @@ namespace Zork.Builder.Forms
             // 
             // startingLocationComboBox
             // 
+            this.startingLocationComboBox.DataSource = this.roomsBindingSource;
+            this.startingLocationComboBox.DisplayMember = "Name";
             this.startingLocationComboBox.FormattingEnabled = true;
             this.startingLocationComboBox.Location = new System.Drawing.Point(112, 69);
             this.startingLocationComboBox.Name = "startingLocationComboBox";
             this.startingLocationComboBox.Size = new System.Drawing.Size(287, 21);
             this.startingLocationComboBox.TabIndex = 8;
+            this.startingLocationComboBox.ValueMember = "Name";
+            this.startingLocationComboBox.SelectedIndexChanged += new System.EventHandler(this.startingLocationComboBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -428,7 +432,6 @@ namespace Zork.Builder.Forms
             this.roomPropertiesGroupBox.PerformLayout();
             this.roomNeighborsGroupBox.ResumeLayout(false);
             this.roomNeighborsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gameBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,7 +476,6 @@ namespace Zork.Builder.Forms
         private System.Windows.Forms.Label startingLocationLabel;
         private System.Windows.Forms.ComboBox startingLocationComboBox;
         private System.Windows.Forms.BindingSource roomsBindingSource;
-        private System.Windows.Forms.BindingSource gameBindingSource;
     }
 }
 

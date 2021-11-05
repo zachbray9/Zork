@@ -1,13 +1,16 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Zork.Common;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace Zork.Builder.Forms
 {
     public partial class MainForm : Form
     {
+        public string assemblyTitle = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
         internal GameViewModel ViewModel { get; private set; }
 
         private bool isWorldLoaded
@@ -96,7 +99,7 @@ namespace Zork.Builder.Forms
 
         private void roomsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            deleteRoomButton.Enabled = roomsListBox.SelectedItem != null;
         }
 
         private void addRoomButton_Click(object sender, EventArgs e)
@@ -105,7 +108,7 @@ namespace Zork.Builder.Forms
             {
                 if (addRoomForm.ShowDialog() == DialogResult.OK)
                 {
-                    Room room = new Room(addRoomForm.RoomName, ""); //{ Name = addRoomForm.RoomName };
+                    Room room = new Room (addRoomForm.RoomName, "");
                     ViewModel.Rooms.Add(room);
 
                 }
@@ -114,7 +117,11 @@ namespace Zork.Builder.Forms
 
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented.");
+            if(MessageBox.Show("Are you sure you want to delete this room?", assemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ViewModel.Rooms.Remove((Room)roomsListBox.SelectedItem);
+                roomsListBox.SelectedItem = ViewModel.Rooms.FirstOrDefault();
+            }
         }
 
         private Control[] worldDependentControls;
@@ -137,6 +144,11 @@ namespace Zork.Builder.Forms
         private void roomNameTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void startingLocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            startingLocationComboBox.SelectedItem = ViewModel.StartingLocation;
         }
     }
 }

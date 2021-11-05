@@ -28,10 +28,6 @@ namespace Zork.Builder
 
         public Game Game
         {
-            //get
-            //{
-            //    return _game;
-            //}
 
             set
             {
@@ -53,6 +49,7 @@ namespace Zork.Builder
                         StartingLocation = "West of House";
                     }
                 }
+
             }
         }
 
