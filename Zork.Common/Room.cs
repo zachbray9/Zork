@@ -8,7 +8,7 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Name { get; }
+        public string Name { get; set; } //Added a setter for add player form
         public string Description { get; set; }
 
         [JsonIgnore]
