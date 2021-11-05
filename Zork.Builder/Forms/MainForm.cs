@@ -148,7 +148,7 @@ namespace Zork.Builder.Forms
 
         private void startingLocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            startingLocationComboBox.SelectedItem = ViewModel.StartingLocation;
+            
         }
     }
 }
