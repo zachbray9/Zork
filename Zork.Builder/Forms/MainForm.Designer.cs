@@ -1,5 +1,5 @@
 ﻿
-namespace Zork.Builder
+namespace Zork.Builder.Forms
 {
     partial class MainForm
     {

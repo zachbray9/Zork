@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Zork.Common
 {
@@ -16,6 +17,7 @@ namespace Zork.Common
 
         public string ExitMessage { get; set; }
 
+        [JsonIgnore]
         public Player Player { get; private set; }
 
 

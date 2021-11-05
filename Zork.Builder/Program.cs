@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zork.Builder.Forms;
 
-namespace Zork.Builder
+namespace Zork.Builder.Forms
 {
     static class Program
     {

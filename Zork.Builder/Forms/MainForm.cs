@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Zork.Common;
 using Newtonsoft.Json;
 
-namespace Zork.Builder
+namespace Zork.Builder.Forms
 {
     public partial class MainForm : Form
     {
@@ -101,7 +101,15 @@ namespace Zork.Builder
 
         private void addRoomButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented.");
+            using (AddRoomForm addRoomForm = new AddRoomForm())
+            {
+                if (addRoomForm.ShowDialog() == DialogResult.OK)
+                {
+                   //Room room = new Room { Name = addRoomForm.RoomName };
+                    
+
+                }
+            }
         }
 
         private void deleteRoomButton_Click(object sender, EventArgs e)
