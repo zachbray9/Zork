@@ -48,14 +48,6 @@ namespace Zork.Builder.Forms
             this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomPropertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.roomNeighborsGroupBox = new System.Windows.Forms.GroupBox();
-            this.westComboBox = new System.Windows.Forms.ComboBox();
-            this.westLabel = new System.Windows.Forms.Label();
-            this.eastComboBox = new System.Windows.Forms.ComboBox();
-            this.eastLabel = new System.Windows.Forms.Label();
-            this.southComboBox = new System.Windows.Forms.ComboBox();
-            this.southLabel = new System.Windows.Forms.Label();
-            this.northLabel = new System.Windows.Forms.Label();
-            this.northComboBox = new System.Windows.Forms.ComboBox();
             this.roomDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.roomDescriptionLabel = new System.Windows.Forms.Label();
             this.roomNameTextBox = new System.Windows.Forms.TextBox();
@@ -67,6 +59,10 @@ namespace Zork.Builder.Forms
             this.exitMessageTextBox = new System.Windows.Forms.TextBox();
             this.startingLocationLabel = new System.Windows.Forms.Label();
             this.startingLocationComboBox = new System.Windows.Forms.ComboBox();
+            this.northNeighborControl = new Zork.Builder.Controls.RoomControl();
+            this.southNeighborControl = new Zork.Builder.Controls.RoomControl();
+            this.eastNeighborControl = new Zork.Builder.Controls.RoomControl();
+            this.westNeighborControl = new Zork.Builder.Controls.RoomControl();
             this.mainMenuStrip.SuspendLayout();
             this.roomsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
@@ -223,88 +219,16 @@ namespace Zork.Builder.Forms
             // 
             // roomNeighborsGroupBox
             // 
-            this.roomNeighborsGroupBox.Controls.Add(this.westComboBox);
-            this.roomNeighborsGroupBox.Controls.Add(this.westLabel);
-            this.roomNeighborsGroupBox.Controls.Add(this.eastComboBox);
-            this.roomNeighborsGroupBox.Controls.Add(this.eastLabel);
-            this.roomNeighborsGroupBox.Controls.Add(this.southComboBox);
-            this.roomNeighborsGroupBox.Controls.Add(this.southLabel);
-            this.roomNeighborsGroupBox.Controls.Add(this.northLabel);
-            this.roomNeighborsGroupBox.Controls.Add(this.northComboBox);
+            this.roomNeighborsGroupBox.Controls.Add(this.westNeighborControl);
+            this.roomNeighborsGroupBox.Controls.Add(this.eastNeighborControl);
+            this.roomNeighborsGroupBox.Controls.Add(this.southNeighborControl);
+            this.roomNeighborsGroupBox.Controls.Add(this.northNeighborControl);
             this.roomNeighborsGroupBox.Location = new System.Drawing.Point(12, 164);
             this.roomNeighborsGroupBox.Name = "roomNeighborsGroupBox";
             this.roomNeighborsGroupBox.Size = new System.Drawing.Size(535, 150);
             this.roomNeighborsGroupBox.TabIndex = 4;
             this.roomNeighborsGroupBox.TabStop = false;
             this.roomNeighborsGroupBox.Text = "Neighbors";
-            // 
-            // westComboBox
-            // 
-            this.westComboBox.FormattingEnabled = true;
-            this.westComboBox.Location = new System.Drawing.Point(307, 118);
-            this.westComboBox.Name = "westComboBox";
-            this.westComboBox.Size = new System.Drawing.Size(190, 21);
-            this.westComboBox.TabIndex = 7;
-            // 
-            // westLabel
-            // 
-            this.westLabel.AutoSize = true;
-            this.westLabel.Location = new System.Drawing.Point(307, 102);
-            this.westLabel.Name = "westLabel";
-            this.westLabel.Size = new System.Drawing.Size(32, 13);
-            this.westLabel.TabIndex = 6;
-            this.westLabel.Text = "West";
-            // 
-            // eastComboBox
-            // 
-            this.eastComboBox.FormattingEnabled = true;
-            this.eastComboBox.Location = new System.Drawing.Point(307, 55);
-            this.eastComboBox.Name = "eastComboBox";
-            this.eastComboBox.Size = new System.Drawing.Size(193, 21);
-            this.eastComboBox.TabIndex = 5;
-            // 
-            // eastLabel
-            // 
-            this.eastLabel.AutoSize = true;
-            this.eastLabel.Location = new System.Drawing.Point(304, 38);
-            this.eastLabel.Name = "eastLabel";
-            this.eastLabel.Size = new System.Drawing.Size(28, 13);
-            this.eastLabel.TabIndex = 4;
-            this.eastLabel.Text = "East";
-            // 
-            // southComboBox
-            // 
-            this.southComboBox.FormattingEnabled = true;
-            this.southComboBox.Location = new System.Drawing.Point(30, 118);
-            this.southComboBox.Name = "southComboBox";
-            this.southComboBox.Size = new System.Drawing.Size(190, 21);
-            this.southComboBox.TabIndex = 3;
-            // 
-            // southLabel
-            // 
-            this.southLabel.AutoSize = true;
-            this.southLabel.Location = new System.Drawing.Point(30, 102);
-            this.southLabel.Name = "southLabel";
-            this.southLabel.Size = new System.Drawing.Size(35, 13);
-            this.southLabel.TabIndex = 2;
-            this.southLabel.Text = "South";
-            // 
-            // northLabel
-            // 
-            this.northLabel.AutoSize = true;
-            this.northLabel.Location = new System.Drawing.Point(27, 39);
-            this.northLabel.Name = "northLabel";
-            this.northLabel.Size = new System.Drawing.Size(33, 13);
-            this.northLabel.TabIndex = 1;
-            this.northLabel.Text = "North";
-            // 
-            // northComboBox
-            // 
-            this.northComboBox.FormattingEnabled = true;
-            this.northComboBox.Location = new System.Drawing.Point(30, 55);
-            this.northComboBox.Name = "northComboBox";
-            this.northComboBox.Size = new System.Drawing.Size(193, 21);
-            this.northComboBox.TabIndex = 0;
             // 
             // roomDescriptionTextBox
             // 
@@ -401,6 +325,38 @@ namespace Zork.Builder.Forms
             this.startingLocationComboBox.ValueMember = "Name";
             this.startingLocationComboBox.SelectedIndexChanged += new System.EventHandler(this.startingLocationComboBox_SelectedIndexChanged);
             // 
+            // northNeighborControl
+            // 
+            this.northNeighborControl.Direction = Zork.Common.Directions.NORTH;
+            this.northNeighborControl.Location = new System.Drawing.Point(202, 19);
+            this.northNeighborControl.Name = "northNeighborControl";
+            this.northNeighborControl.Size = new System.Drawing.Size(127, 53);
+            this.northNeighborControl.TabIndex = 0;
+            // 
+            // southNeighborControl
+            // 
+            this.southNeighborControl.Direction = Zork.Common.Directions.SOUTH;
+            this.southNeighborControl.Location = new System.Drawing.Point(202, 91);
+            this.southNeighborControl.Name = "southNeighborControl";
+            this.southNeighborControl.Size = new System.Drawing.Size(127, 53);
+            this.southNeighborControl.TabIndex = 1;
+            // 
+            // eastNeighborControl
+            // 
+            this.eastNeighborControl.Direction = Zork.Common.Directions.EAST;
+            this.eastNeighborControl.Location = new System.Drawing.Point(30, 53);
+            this.eastNeighborControl.Name = "eastNeighborControl";
+            this.eastNeighborControl.Size = new System.Drawing.Size(127, 53);
+            this.eastNeighborControl.TabIndex = 2;
+            // 
+            // westNeighborControl
+            // 
+            this.westNeighborControl.Direction = Zork.Common.Directions.WEST;
+            this.westNeighborControl.Location = new System.Drawing.Point(382, 53);
+            this.westNeighborControl.Name = "westNeighborControl";
+            this.westNeighborControl.Size = new System.Drawing.Size(127, 53);
+            this.westNeighborControl.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,7 +387,6 @@ namespace Zork.Builder.Forms
             this.roomPropertiesGroupBox.ResumeLayout(false);
             this.roomPropertiesGroupBox.PerformLayout();
             this.roomNeighborsGroupBox.ResumeLayout(false);
-            this.roomNeighborsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,14 +411,6 @@ namespace Zork.Builder.Forms
         private System.Windows.Forms.Label roomDescriptionLabel;
         private System.Windows.Forms.TextBox roomNameTextBox;
         private System.Windows.Forms.Label roomNameLabel;
-        private System.Windows.Forms.ComboBox westComboBox;
-        private System.Windows.Forms.Label westLabel;
-        private System.Windows.Forms.ComboBox eastComboBox;
-        private System.Windows.Forms.Label eastLabel;
-        private System.Windows.Forms.ComboBox southComboBox;
-        private System.Windows.Forms.Label southLabel;
-        private System.Windows.Forms.Label northLabel;
-        private System.Windows.Forms.ComboBox northComboBox;
         private System.Windows.Forms.ToolStripSeparator saveFileSeparatorStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
@@ -476,6 +423,10 @@ namespace Zork.Builder.Forms
         private System.Windows.Forms.Label startingLocationLabel;
         private System.Windows.Forms.ComboBox startingLocationComboBox;
         private System.Windows.Forms.BindingSource roomsBindingSource;
+        private Controls.RoomControl westNeighborControl;
+        private Controls.RoomControl eastNeighborControl;
+        private Controls.RoomControl southNeighborControl;
+        private Controls.RoomControl northNeighborControl;
     }
 }
 

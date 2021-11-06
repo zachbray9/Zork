@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using Zork.Common;
 using Newtonsoft.Json;
 using System.Reflection;
+using System.Collections.Generic;
+using Zork.Builder.Controls;
 
 namespace Zork.Builder.Forms
 {
@@ -47,10 +49,10 @@ namespace Zork.Builder.Forms
                 deleteRoomButton,
                 roomNameTextBox,
                 roomDescriptionTextBox,
-                northComboBox,
-                southComboBox,
-                eastComboBox,
-                westComboBox,
+                northNeighborControl,
+                southNeighborControl,
+                eastNeighborControl,
+                westNeighborControl,
                 welcomeMessageTextBox,
                 exitMessageTextBox,
                 startingLocationComboBox
@@ -60,6 +62,14 @@ namespace Zork.Builder.Forms
             {
                 saveToolStripMenuItem,
                 saveAsToolStripMenuItem
+            };
+
+            directionsControlMap = new Dictionary<Directions, RoomControl>
+            {
+                { Directions.NORTH, northNeighborControl },
+                { Directions.SOUTH, southNeighborControl },
+                { Directions.EAST, eastNeighborControl },
+                { Directions.WEST, westNeighborControl }
             };
 
             isWorldLoaded = false;
@@ -83,6 +93,13 @@ namespace Zork.Builder.Forms
                 {
                     ViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
                     ViewModel.fileName = openFileDialog.FileName;
+
+                    Room selectedRoom = roomsListBox.SelectedItem as Room;
+                    foreach(var Control in directionsControlMap.Values)
+                    {
+                        Control.Room = selectedRoom;
+                    }
+
                     isWorldLoaded = true;
                 }
                 catch(Exception ex)
@@ -100,6 +117,13 @@ namespace Zork.Builder.Forms
         private void roomsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             deleteRoomButton.Enabled = roomsListBox.SelectedItem != null;
+
+            Room selectedRoom = roomsListBox.SelectedItem as Room;
+            foreach (var Control in directionsControlMap.Values)
+            {
+                Control.Room = selectedRoom;
+            }
+
         }
 
         private void addRoomButton_Click(object sender, EventArgs e)
@@ -150,5 +174,7 @@ namespace Zork.Builder.Forms
         {
             
         }
+
+        private readonly Dictionary<Directions, RoomControl> directionsControlMap;
     }
 }
