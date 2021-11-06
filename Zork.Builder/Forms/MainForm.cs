@@ -176,5 +176,10 @@ namespace Zork.Builder.Forms
         }
 
         private readonly Dictionary<Directions, RoomControl> directionsControlMap;
+
+        private void northNeighborControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
