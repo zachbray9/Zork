@@ -9,6 +9,8 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public IOutputService output { get; set; }
+
         public World World { get; set; }
 
         public string StartingLocation { get; set; }

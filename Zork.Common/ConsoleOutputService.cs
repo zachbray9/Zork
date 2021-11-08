@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Zork.Common
 {
-    class ConsoleOutputService
+    class ConsoleOutputService : IOutputService
     {
+
     }
 }

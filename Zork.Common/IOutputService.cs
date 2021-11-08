@@ -4,7 +4,16 @@ using System.Text;
 
 namespace Zork.Common
 {
-    interface Interface1
+    public interface IOutputService
     {
+        void Write(object value)
+        {
+            Console.Write(value);
+        }
+
+        void WriteLine(object value)
+        {
+            Console.WriteLine(value);
+        }
     }
 }
