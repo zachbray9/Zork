@@ -6,14 +6,14 @@ namespace Zork.Common
 {
     public interface IOutputService
     {
-        void Write(object value)
-        {
-            Console.Write(value);
-        }
+        //void Write(object value)
+        //{
+        //    Console.Write(value);
+        //}
 
-        void WriteLine(object value)
-        {
-            Console.WriteLine(value);
-        }
+        //void WriteLine(object value)
+        //{
+        //    Console.WriteLine(value);
+        //}
     }
 }
