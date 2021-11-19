@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
@@ -10,6 +11,9 @@ namespace Zork.Common
         public event PropertyChangedEventHandler PropertyChanged;
 
         public IOutputService output { get; set; }
+
+        [JsonIgnore]
+        public static Game Instance { get; private set; }
 
         public World World { get; set; }
 
@@ -29,19 +33,42 @@ namespace Zork.Common
             Player = new Player(World, StartingLocation);
         }
 
+        public static void StartGameFromFile(string gameFileName)
+        {
+            if(!File.Exists(gameFileName))
+            {
+                throw new FileNotFoundException("Expected file.", gameFileName);
+            }
+
+            StartGame(File.ReadAllText(gameFileName));
+        }
+
+        public static void StartGame(string jsonString)
+        {
+            //game = JsonConvert.DeserializeObject<Game>(jsonString);
+            Instance = Load(jsonString);
+            //Instance.Run();
+        }
+
+        public static Game Load(string jsonString)
+        {
+            Game game = JsonConvert.DeserializeObject<Game>(jsonString);
+            return game;
+        }
+
         public void Run()
         {
-            Console.WriteLine(WelcomeMessage);
+            Console.WriteLine(Instance.WelcomeMessage);
 
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
-
-                Console.WriteLine(Player.CurrentRoom);
-                if (Player.PreviousRoom != Player.CurrentRoom)
+                
+                Console.WriteLine(Instance.Player.CurrentRoom);
+                if (Instance.Player.PreviousRoom != Instance.Player.CurrentRoom)
                 {
-                    Console.WriteLine(Player.CurrentRoom.Description);
-                    Player.PreviousRoom = Player.CurrentRoom;
+                    Console.WriteLine(Instance.Player.CurrentRoom.Description);
+                    Instance.Player.PreviousRoom = Instance.Player.CurrentRoom;
                 }
                 Console.Write("\n> ");
 
@@ -51,11 +78,11 @@ namespace Zork.Common
                 switch (command)
                 {
                     case Commands.QUIT:
-                        outputString = ExitMessage;
+                        outputString = Instance.ExitMessage;
                         break;
 
                     case Commands.LOOK:
-                        outputString = Player.CurrentRoom.Description;
+                        outputString = Instance.Player.CurrentRoom.Description;
                         break;
 
                     case Commands.NORTH:
@@ -63,7 +90,7 @@ namespace Zork.Common
                     case Commands.EAST:
                     case Commands.WEST:
                         Directions direction = (Directions)command;
-                        outputString = Player.Move(direction) ? $"You moved {command}." : "The way is shut!";
+                        outputString = Instance.Player.Move(direction) ? $"You moved {command}." : "The way is shut!";
                         break;
 
                     default:

@@ -17,11 +17,13 @@ namespace Zork
 
             const string defaultGameFileName = "Zork.json";
             string gameFileName = args.Length > 0 ? args[(int)CommandLineArguments.GameFileName] : defaultGameFileName;
-            string jsonString = File.ReadAllText(gameFileName);
+            //string jsonString = File.ReadAllText(gameFileName);
 
             //IOutputService output = new ConsoleOutputService();
-            Game game = JsonConvert.DeserializeObject<Game>(jsonString);
-            game.Run();
+            //Game game = JsonConvert.DeserializeObject<Game>(jsonString);
+            //game.Run();
+
+            Game.StartGameFromFile(gameFileName);
 
         }
 
