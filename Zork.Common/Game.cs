@@ -10,7 +10,8 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public IOutputService output { get; set; }
+        [JsonIgnore]
+        public IOutputService Output { get; private set; }
 
         [JsonIgnore]
         public static Game Instance { get; private set; }
@@ -33,20 +34,21 @@ namespace Zork.Common
             Player = new Player(World, StartingLocation);
         }
 
-        public static void StartGameFromFile(string gameFileName)
+        public static void StartGameFromFile(string gameFileName, IOutputService output)
         {
             if(!File.Exists(gameFileName))
             {
                 throw new FileNotFoundException("Expected file.", gameFileName);
             }
 
-            StartGame(File.ReadAllText(gameFileName));
+            StartGame(File.ReadAllText(gameFileName), output);
         }
 
-        public static void StartGame(string jsonString)
+        public static void StartGame(string jsonString, IOutputService output)
         {
             //game = JsonConvert.DeserializeObject<Game>(jsonString);
             Instance = Load(jsonString);
+            Instance.Output = output;
             //Instance.Run();
         }
 
@@ -58,19 +60,19 @@ namespace Zork.Common
 
         public void Run()
         {
-            Console.WriteLine(Instance.WelcomeMessage);
+            Output.WriteLine(Instance.WelcomeMessage);
 
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
                 
-                Console.WriteLine(Instance.Player.CurrentRoom);
+                Output.WriteLine(Instance.Player.CurrentRoom);
                 if (Instance.Player.PreviousRoom != Instance.Player.CurrentRoom)
                 {
-                    Console.WriteLine(Instance.Player.CurrentRoom.Description);
+                    Output.WriteLine(Instance.Player.CurrentRoom.Description);
                     Instance.Player.PreviousRoom = Instance.Player.CurrentRoom;
                 }
-                Console.Write("\n> ");
+                Output.Write("\n> ");
 
                 command = ToCommand(Console.ReadLine().Trim());
 
@@ -98,7 +100,7 @@ namespace Zork.Common
                         break;
                 }
 
-                Console.WriteLine(outputString);
+                Output.WriteLine(outputString);
             }
         }
 

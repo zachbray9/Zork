@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string ZorkGameFileAssetName = "Zork";
 
+    [SerializeField]
+    private UnityOutputService Output;
+
     void Awake()
     {
         TextAsset gameJsonAsset = Resources.Load<TextAsset>(ZorkGameFileAssetName);
 
-        Game.StartGame(gameJsonAsset.text);
+        Game.StartGame(gameJsonAsset.text, Output);
     }
     // Start is called before the first frame update
     void Start()

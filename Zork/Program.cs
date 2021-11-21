@@ -23,7 +23,9 @@ namespace Zork
             //Game game = JsonConvert.DeserializeObject<Game>(jsonString);
             //game.Run();
 
-            Game.StartGameFromFile(gameFileName);
+            ConsoleOutputService output = new ConsoleOutputService();
+
+            Game.StartGameFromFile(gameFileName, output);
 
         }
 
