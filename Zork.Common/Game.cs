@@ -49,6 +49,7 @@ namespace Zork.Common
             //game = JsonConvert.DeserializeObject<Game>(jsonString);
             Instance = Load(jsonString);
             Instance.Output = output;
+            Instance.DisplayWelcomeMessage();
             //Instance.Run();
         }
 
@@ -102,6 +103,11 @@ namespace Zork.Common
 
                 Output.WriteLine(outputString);
             }
+        }
+
+        private void DisplayWelcomeMessage()
+        {
+            Output.WriteLine(Instance.WelcomeMessage);
         }
 
         static Commands ToCommand(string commandString)

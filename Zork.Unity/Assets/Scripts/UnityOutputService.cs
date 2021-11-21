@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 using Zork.Common;
+using TMPro;
 
 public class UnityOutputService : MonoBehaviour, IOutputService
 {
+    [SerializeField]
+    private TextMeshProUGUI OutputText;
 
     public void Write(string value)
     {
@@ -12,17 +15,17 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     public void Write(object value)
     {
-        throw new System.NotImplementedException();
+        Write(value.ToString());
     }
 
     public void WriteLine(string value)
     {
-        throw new System.NotImplementedException();
+        OutputText.text = value;
     }
 
     public void WriteLine(object value)
     {
-        throw new System.NotImplementedException();
+        WriteLine(value.ToString());
     }
 
     public void Clear()
