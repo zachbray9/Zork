@@ -10,7 +10,7 @@ public class UnityOutputService : MonoBehaviour, IOutputService
     private TextMeshProUGUI OutputText;
 
     [SerializeField]
-    private ScrollView scrollView;
+    private GameObject ContentWindow;
 
     public void Write(string value)
     {
@@ -24,7 +24,9 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     public void WriteLine(string value)
     {
-        Instantiate(OutputText);  
+        OutputText = Instantiate(OutputText);
+        OutputText.rectTransform.SetParent(ContentWindow.transform, false);
+
         OutputText.text = value;
     }
 

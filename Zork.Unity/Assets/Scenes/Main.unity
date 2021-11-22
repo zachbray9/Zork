@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OutputText: {fileID: 4088106928157636981, guid: 32b414a31ff241c4085992bb517b3859, type: 3}
+  ContentWindow: {fileID: 1793792020}
 --- !u!114 &326055179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1402,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1251227165}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.998307
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1478,7 +1479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -281.08994}
+  m_AnchoredPosition: {x: 0, y: -281.09003}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1793792022
@@ -1497,9 +1498,9 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 5
   m_ChildAlignment: 6
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
