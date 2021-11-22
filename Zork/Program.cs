@@ -23,10 +23,23 @@ namespace Zork
             //Game game = JsonConvert.DeserializeObject<Game>(jsonString);
             //game.Run();
 
+            ConsoleInputService input = new ConsoleInputService();
             ConsoleOutputService output = new ConsoleOutputService();
 
-            Game.StartGameFromFile(gameFileName, output);
+            Game.StartGameFromFile(gameFileName, input, output);
 
+            output.WriteLine(Game.Instance.Player.CurrentRoom);
+            output.WriteLine(Game.Instance.Player.CurrentRoom.Description);
+
+            while (Game.Instance.IsRunning)
+            {
+                //output.WriteLine(Game.Instance.Player.CurrentRoom);
+                //output.WriteLine(Game.Instance.Player.CurrentRoom.Description);
+                output.Write("\n> ");
+                input.GetInput();
+            }
+
+            output.WriteLine(Game.Instance.ExitMessage);
         }
 
     }

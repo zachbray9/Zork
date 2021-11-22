@@ -2,11 +2,15 @@ using System;
 using UnityEngine;
 using Zork.Common;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class UnityOutputService : MonoBehaviour, IOutputService
 {
     [SerializeField]
     private TextMeshProUGUI OutputText;
+
+    [SerializeField]
+    private ScrollView scrollView;
 
     public void Write(string value)
     {
@@ -20,6 +24,7 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     public void WriteLine(string value)
     {
+        Instantiate(OutputText);  
         OutputText.text = value;
     }
 
