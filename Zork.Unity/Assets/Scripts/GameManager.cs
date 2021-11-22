@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zork.Common;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private UnityOutputService OutputService;
+
+    [SerializeField]
+    private TextMeshProUGUI LocationText;
 
     void Awake()
     {
@@ -30,6 +34,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LocationText.text = Game.Instance.Player.CurrentRoom.ToString();
+
         if(Game.Instance.IsRunning == false)
         {
             Application.Quit();
