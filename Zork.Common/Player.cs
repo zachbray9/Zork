@@ -15,10 +15,17 @@ namespace Zork.Common
         [JsonIgnore]
         public Room PreviousRoom { get; set; }
 
+        [JsonIgnore]
+        public int MovesCount { get; private set; }
+
+        [JsonIgnore]
+        public int Score { get; private set; }
+
 
         public Player(World world, string startingLocation)
         {
-
+            MovesCount = 0;
+            Score = 0;
             World = world;
             CurrentRoom = World.RoomsByName[startingLocation];
 
@@ -36,6 +43,17 @@ namespace Zork.Common
 
             return isValidMove;
 
+        }
+
+        public void IncrementMovesCount()
+        {
+            MovesCount += 1;
+        }
+
+
+        public void AddScore(int amountToAdd)
+        {
+            Score += amountToAdd;
         }
     }
 }

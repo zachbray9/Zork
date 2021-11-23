@@ -7,8 +7,7 @@ public class UnityInputService : MonoBehaviour, IInputService
 {
     public event EventHandler<string> InputReceived;
 
-    [SerializeField]
-    private TMP_InputField InputField;
+    public TMP_InputField InputField;
 
     void Update()
     {
@@ -22,6 +21,9 @@ public class UnityInputService : MonoBehaviour, IInputService
             }
 
             InputField.text = string.Empty;
+
+            InputField.Select();
+            InputField.ActivateInputField();
         }
     }
     

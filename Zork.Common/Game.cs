@@ -74,41 +74,36 @@ namespace Zork.Common
             Commands command = Commands.UNKNOWN;
             Instance.Player.PreviousRoom = Instance.Player.CurrentRoom;
 
-            //Output.WriteLine(Instance.Player.CurrentRoom);
+            Instance.Player.IncrementMovesCount();
 
-            //Output.Write("\n> ");
             command = ToCommand(inputString.Trim());
 
-            //string outputString;
-                switch (command)
-                {
-                    case Commands.QUIT:
-                        //outputString = Instance.ExitMessage;
-                        Instance.IsRunning = false;
-                        break;
-
-                    case Commands.LOOK:
-                    //outputString = Instance.Player.CurrentRoom.Description;
-                    Output.WriteLine(Instance.Player.CurrentRoom);
-                    Output.WriteLine(Instance.Player.CurrentRoom.Description);
+            switch (command)
+            {
+                case Commands.QUIT:
+                    Instance.IsRunning = false;
                     break;
 
-                    case Commands.NORTH:
-                    case Commands.SOUTH:
-                    case Commands.EAST:
-                    case Commands.WEST:
-                        Directions direction = (Directions)command;
-                    //outputString = Instance.Player.Move(direction) ? $"You moved {command}." : "The way is shut!";
+                case Commands.LOOK:
+                    Output.WriteLine(Instance.Player.CurrentRoom);
+                    Output.WriteLine(Instance.Player.CurrentRoom.Description);
+                    Instance.Player.AddScore(3);
+                    break;
+
+                case Commands.NORTH:
+                case Commands.SOUTH:
+                case Commands.EAST:
+                case Commands.WEST:
+                    Directions direction = (Directions)command;
                     Output.WriteLine(Instance.Player.Move(direction) ? $"You moved {command}." : "The way is shut!");
-                        break;
+                    Instance.Player.AddScore(3);
+                    break;
 
-                    default:
-                    //outputString = "Unknown command.";
+                default:
                     Output.WriteLine("Unknown command.");
-                        break;
-                }
+                    break;
+            }
 
-                //Output.WriteLine(outputString);
             if (Instance.Player.PreviousRoom != Instance.Player.CurrentRoom)
             {
                 Output.WriteLine(Instance.Player.CurrentRoom);
