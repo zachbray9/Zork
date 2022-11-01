@@ -63,12 +63,14 @@ namespace Zork.Builder.Forms
             this.exitMessageTextBox = new System.Windows.Forms.TextBox();
             this.startingLocationLabel = new System.Windows.Forms.Label();
             this.startingLocationComboBox = new System.Windows.Forms.ComboBox();
+            this.roomsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.roomsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             this.roomPropertiesGroupBox.SuspendLayout();
             this.roomNeighborsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -239,6 +241,7 @@ namespace Zork.Builder.Forms
             this.westNeighborControl.Room = null;
             this.westNeighborControl.Size = new System.Drawing.Size(127, 53);
             this.westNeighborControl.TabIndex = 3;
+            this.westNeighborControl.Load += new System.EventHandler(this.westNeighborControl_Load);
             // 
             // eastNeighborControl
             // 
@@ -249,6 +252,7 @@ namespace Zork.Builder.Forms
             this.eastNeighborControl.Room = null;
             this.eastNeighborControl.Size = new System.Drawing.Size(127, 53);
             this.eastNeighborControl.TabIndex = 2;
+            this.eastNeighborControl.Load += new System.EventHandler(this.eastNeighborControl_Load);
             // 
             // southNeighborControl
             // 
@@ -259,6 +263,7 @@ namespace Zork.Builder.Forms
             this.southNeighborControl.Room = null;
             this.southNeighborControl.Size = new System.Drawing.Size(127, 53);
             this.southNeighborControl.TabIndex = 1;
+            this.southNeighborControl.Load += new System.EventHandler(this.southNeighborControl_Load);
             // 
             // northNeighborControl
             // 
@@ -356,7 +361,7 @@ namespace Zork.Builder.Forms
             // 
             // startingLocationComboBox
             // 
-            this.startingLocationComboBox.DataSource = this.roomsBindingSource;
+            this.startingLocationComboBox.DataSource = this.roomsBindingSource1;
             this.startingLocationComboBox.DisplayMember = "Name";
             this.startingLocationComboBox.FormattingEnabled = true;
             this.startingLocationComboBox.Location = new System.Drawing.Point(112, 69);
@@ -365,6 +370,11 @@ namespace Zork.Builder.Forms
             this.startingLocationComboBox.TabIndex = 8;
             this.startingLocationComboBox.ValueMember = "Name";
             this.startingLocationComboBox.SelectedIndexChanged += new System.EventHandler(this.startingLocationComboBox_SelectedIndexChanged);
+            // 
+            // roomsBindingSource1
+            // 
+            this.roomsBindingSource1.DataMember = "Rooms";
+            this.roomsBindingSource1.DataSource = this.gameViewModelBindingSource;
             // 
             // MainForm
             // 
@@ -396,6 +406,7 @@ namespace Zork.Builder.Forms
             this.roomPropertiesGroupBox.ResumeLayout(false);
             this.roomPropertiesGroupBox.PerformLayout();
             this.roomNeighborsGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,6 +447,7 @@ namespace Zork.Builder.Forms
         private Controls.RoomControl eastNeighborControl;
         private Controls.RoomControl southNeighborControl;
         private Controls.RoomControl northNeighborControl;
+        private System.Windows.Forms.BindingSource roomsBindingSource1;
     }
 }
 

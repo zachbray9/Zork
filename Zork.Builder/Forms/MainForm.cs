@@ -133,8 +133,10 @@ namespace Zork.Builder.Forms
                 if (addRoomForm.ShowDialog() == DialogResult.OK)
                 {
                     Room room = new Room (addRoomForm.RoomName, "");
+
                     ViewModel.Rooms.Add(room);
 
+                    
                 }
             }
         }
@@ -179,7 +181,23 @@ namespace Zork.Builder.Forms
 
         private void northNeighborControl_Load(object sender, EventArgs e)
         {
+            northNeighborControl.GameViewModel = ViewModel;
+            
+        }
 
+        private void eastNeighborControl_Load(object sender, EventArgs e)
+        {
+            eastNeighborControl.GameViewModel = ViewModel;
+        }
+
+        private void southNeighborControl_Load(object sender, EventArgs e)
+        {
+            southNeighborControl.GameViewModel = ViewModel;
+        }
+
+        private void westNeighborControl_Load(object sender, EventArgs e)
+        {
+            westNeighborControl.GameViewModel = ViewModel;
         }
     }
 }

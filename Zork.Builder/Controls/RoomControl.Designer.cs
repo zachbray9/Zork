@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.directionTextBox = new System.Windows.Forms.TextBox();
             this.neighborsComboBox = new System.Windows.Forms.ComboBox();
+            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // directionTextBox
@@ -48,13 +51,18 @@
             // 
             this.neighborsComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.neighborsComboBox.DisplayMember = "Name";
+            this.neighborsComboBox.DataSource = this.gameViewModelBindingSource;
             this.neighborsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.neighborsComboBox.FormattingEnabled = true;
             this.neighborsComboBox.Location = new System.Drawing.Point(3, 29);
             this.neighborsComboBox.Name = "neighborsComboBox";
             this.neighborsComboBox.Size = new System.Drawing.Size(121, 21);
             this.neighborsComboBox.TabIndex = 1;
+            // 
+            // gameViewModelBindingSource
+            // 
+            this.gameViewModelBindingSource.DataMember = "Rooms";
+            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.GameViewModel);
             // 
             // RoomControl
             // 
@@ -64,6 +72,7 @@
             this.Controls.Add(this.directionTextBox);
             this.Name = "RoomControl";
             this.Size = new System.Drawing.Size(127, 53);
+            ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,5 +82,6 @@
 
         private System.Windows.Forms.TextBox directionTextBox;
         private System.Windows.Forms.ComboBox neighborsComboBox;
+        private System.Windows.Forms.BindingSource gameViewModelBindingSource;
     }
 }
