@@ -5,8 +5,141 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZorkBuilderWPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Margin="5, 0, 5, 0">
+            <MenuItem Name="fileMenuItem" Header="File">
+                <MenuItem Name ="openMenuItem" Header="Open"/>
+                <Separator/>
+                <MenuItem Name="saveMenuItem" Header="Save"/>
+                <MenuItem Name="saveAsMenuItem" Header="Save As"/>
+                <Separator/>
+                <MenuItem Name="exitMenuItem" Header="Exit"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <!--Welcome Message Grid-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label Name="welcomeMessageLabel" Content="Welcome Message" Margin="10, 0, 10, 0"/>
+                <TextBox x:Name="welcomeMessageTextBox" Margin="15, 0, 15, 5"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <Label Name="startingLocationLabel" Content="Starting Location" Margin="10, 0, 10, 0"/>
+                <TextBox x:Name="startingLocationTextBox" Margin="15, 0, 15, 5"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Label Name="exitMessageLabel" Content="Exit Message" Margin="10, 0, 10, 0"/>
+                <TextBox x:Name="exitMessageTextbox" Margin="15, 0, 15, 5"/>
+            </StackPanel>
+        </Grid>
+
+        <Separator Grid.Row="2" Margin="15, 10, 15, 10"/>
+
+        <Grid Grid.Row="3">                                             <!--Rooms/Neighbors Grid-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">                                           <!--Rooms listbox grid-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <Label Name="roomsListLabel" Content="Rooms" Margin="10, 0, 10, 0"/>
+                    <ListBox Name="roomsListBox" Height="275" Margin="15, 0, 15, 0"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">                                       <!--Add/delete button grid-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Name="addRoomButton" Content="Add Room" Width="80" Margin="25, 10, 5, 10"/>
+                    <Button Grid.Column="1" Name="deleteRoomButton" Content="Delete Room" Width="80" Margin="5, 10, 25, 10"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="1">                                  <!--Neighbors Grid-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <Label Name="roomPropertiesLabel" Content="Room Properties" Margin="10, 0, 10, 0"/>
+                    <Label Name="roomNameLabel" Content="Name" Margin="10, 5, 10, 0"/>
+                    <TextBox Name="roomNameTextBox" Margin="15,0, 15, 0"/>
+                    <Label Name="roomDescriptionLabel" Content="Description" Margin="10, 10, 10, 0"/>
+                    <TextBox Name="roomDescriptionTextBox" Margin="15, 0, 15, 15"/>
+                </StackPanel>
+
+                <Separator Grid.Row="1" Margin="15, 0, 15, 0"/>
+
+                <Grid Grid.Row="2">                                  <!--Neighbor controls grid-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Name="neighborsLabel" Content="Neighbors" Margin="15, 0, 15, 0"/>
+                    
+                    <StackPanel Grid.Column="0" Grid.Row="1">
+                        <Label Name="eastNeighborLabel" Content="East" HorizontalAlignment="Center"/>
+                        <ComboBox Margin="15, 0, 15, 0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0">
+                        <Label Name="northNeighborLabel" Content="North" HorizontalAlignment="Center"/>
+                        <ComboBox Margin="15, 0, 15, 0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="2">
+                        <Label Name="southNeighborLabel" Content="South" HorizontalAlignment="Center"/>
+                        <ComboBox Margin="15, 0, 15, 0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Grid.Row="1">
+                        <Label Name="WestNeighborLabel" Content="West" HorizontalAlignment="Center"/>
+                        <ComboBox Margin="15, 0, 15, 0"/>
+                    </StackPanel>
+
+                </Grid>
+                
+            </Grid>
+        </Grid>
+
     </Grid>
 </UserControl>

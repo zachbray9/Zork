@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZorkBuilderWPF.ViewModels
 {
-    public class ZorkBuilderViewModel
+    public class ZorkBuilderViewModel : ViewModelBase
     {
 
     }
