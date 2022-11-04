@@ -69,7 +69,7 @@
 
                 <StackPanel Grid.Row="0">
                     <Label Name="roomsListLabel" Content="Rooms" Margin="10, 0, 10, 0"/>
-                    <ListBox Name="roomsListBox" Height="275" Margin="15, 0, 15, 0"/>
+                    <ListBox Name="roomsListBox" Height="275" Margin="15, 0, 15, 0" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <Grid Grid.Row="1">                                       <!--Add/delete button grid-->
@@ -94,9 +94,9 @@
                 <StackPanel Grid.Row="0">
                     <Label Name="roomPropertiesLabel" Content="Room Properties" Margin="10, 0, 10, 0"/>
                     <Label Name="roomNameLabel" Content="Name" Margin="10, 5, 10, 0"/>
-                    <TextBox Name="roomNameTextBox" Margin="15,0, 15, 0"/>
+                    <TextBox Name="roomNameTextBox" Margin="15,0, 15, 0" Text="{Binding ElementName=roomsListBox, Path=SelectedItem.Name, Mode=TwoWay}"/>
                     <Label Name="roomDescriptionLabel" Content="Description" Margin="10, 10, 10, 0"/>
-                    <TextBox Name="roomDescriptionTextBox" Margin="15, 0, 15, 15"/>
+                    <TextBox Name="roomDescriptionTextBox" Margin="15, 0, 15, 15" Text="{Binding ElementName=roomsListBox, Path=SelectedItem.Description, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <Separator Grid.Row="1" Margin="15, 0, 15, 0"/>
