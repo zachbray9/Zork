@@ -67,13 +67,14 @@ namespace ZorkBuilderWPF.ViewModels
         {
             get
             {
-                //return game.World.Rooms;
-                return rooms;
+                return game.World.Rooms;
+                
+                //return rooms;
             }
             set
             {
-                //game.World.Rooms = value;
-                rooms = value;
+                game.World.Rooms = value;
+                //rooms = value;
                 OnPropertyChanged(nameof(Rooms));
             }
         }
@@ -100,8 +101,9 @@ namespace ZorkBuilderWPF.ViewModels
         public ZorkBuilderViewModel()
         {
             game = new Game();
-            Rooms = new List<Room>();
-            Rooms.Add(new Room("bruh room", "this is a room"));
+            game.World = new World();                                        
+            //Rooms.Add(new Room("bruh room", "this is a room"));
+
         }
     }
 }

@@ -9,6 +9,11 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public World()
+        {
+            Rooms = new List<Room>();
+        }
+
         //public Room[] Rooms { get; set; }
         public List<Room> Rooms { get; set; }
 
