@@ -3,9 +3,9 @@ using System.ComponentModel;
 
 namespace Zork.Common
 {
-    public class Player : INotifyPropertyChanged
+    public class Player //: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public World World { get; }
 

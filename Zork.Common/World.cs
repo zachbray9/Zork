@@ -5,13 +5,13 @@ using Newtonsoft.Json;
 
 namespace Zork.Common
 {
-    public class World : INotifyPropertyChanged
+    public class World //: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public World()
         {
-            Rooms = new List<Room>();
+            Rooms = new List<Room>();                                //added this in zorkbuilder wpf because initializing a new game did not initalize a world or the rooms list in the world
         }
 
         //public Room[] Rooms { get; set; }

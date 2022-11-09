@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 
 namespace Zork.Common
 {
-    public class Game : INotifyPropertyChanged
+    public class Game //: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
 
         [JsonIgnore]
