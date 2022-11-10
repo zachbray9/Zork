@@ -14,15 +14,26 @@ namespace ZorkBuilderWPF.ViewModels
         private Game game;
         public Game Game
         {
-            get
-            {
-                return game;
-            }
+            get => game;
             set
             {
                 game = value;
-                OnPropertyChanged(nameof(Game));
+                //OnPropertyChanged(nameof(Game));
             }
+        }
+
+        public ZorkBuilderViewModel()
+        {
+            game = new Game();
+            game.World = new World();
+
+            game.WelcomeMessage = "Welcome to Zork!";
+            game.ExitMessage = "Thanks for playing!";
+            rooms = new List<Room>();
+            //Rooms.Add(new Room("bruh room", "this is a room"));
+
+            OpenCommand = new OpenCommand(this);
+            AddRoomCommand = new AddRoomCommand(this);
         }
 
         private string fileName;
@@ -30,7 +41,10 @@ namespace ZorkBuilderWPF.ViewModels
         {
             get
             {
-                return fileName;
+                if (fileName == null)
+                    return $"Zorkbuilder - Untitled";
+                else
+                    return $"Zorkbuilder - {fileName}";
             }
             set
             {
@@ -42,22 +56,13 @@ namespace ZorkBuilderWPF.ViewModels
         private string filePath;
         public string FilePath
         {
-            get
-            {
-                return filePath;
-            }
-            set
-            {
-                filePath = value;
-            }
+            get => filePath;
+            set => filePath = value;
         }
 
         public string WelcomeMessage
         {
-            get
-            {
-                return game.WelcomeMessage;
-            }
+            get => game.WelcomeMessage;
             set
             {
                 game.WelcomeMessage = value;
@@ -67,10 +72,7 @@ namespace ZorkBuilderWPF.ViewModels
 
         public string ExitMessage
         {
-            get
-            {
-                return game.ExitMessage;
-            }
+            get => game.ExitMessage;
             set
             {
                 game.ExitMessage = value;
@@ -80,10 +82,7 @@ namespace ZorkBuilderWPF.ViewModels
 
         public string StartingLocation
         {
-            get
-            {
-                return game.StartingLocation;
-            }
+            get => game.StartingLocation;
             set
             {
                 game.StartingLocation = value;
@@ -91,50 +90,30 @@ namespace ZorkBuilderWPF.ViewModels
             }
         }
 
+        private List<Room> rooms;
         public List<Room> Rooms
         {
-            get
-            {
-                return game.World.Rooms;
-                
-                //return rooms;
-            }
+            //get => game.World.Rooms;
+            get => rooms;
             set
             {
-                game.World.Rooms = value;
+                //game.World.Rooms = value;
+                rooms = value;
                 OnPropertyChanged(nameof(Rooms));
             }
         }
 
-        //private List<string> roomNames = new List<string>();
-        //public List<string> RoomNames
-        //{
-        //    get
-        //    {
-        //        for (int i = 0; i < Rooms.Count; i++)
-        //        {
-        //            roomNames[i] = Rooms[i].ToString();
-        //        }
-        //        return roomNames;
-        //    }
-        //    set
-        //    {
-        //        roomNames = value;
-        //        OnPropertyChanged(nameof(RoomNames));
-        //    }
-        //}
-
-        public ZorkBuilderViewModel()
+        private List<string> roomNames = new List<string>();
+        public List<string> RoomNames
         {
-            game = new Game();
-            game.World = new World();
-            //game.WelcomeMessage = "Welcome to Zork!";
-            //game.ExitMessage = "Thanks for playing!";
-            //Rooms.Add(new Room("bruh room", "this is a room"));
-
-            OpenCommand = new OpenCommand(this);
-            AddRoomCommand = new AddRoomCommand(this);
+            get => roomNames;
+            set
+            {
+                roomNames = value;
+                OnPropertyChanged(nameof(RoomNames));
+            }
         }
+
 
         public ICommand OpenCommand
         {
@@ -145,6 +124,17 @@ namespace ZorkBuilderWPF.ViewModels
         {
             get;
         }
-        
+
+        public void UpdateRoomNamesList()
+        {
+            roomNames = new List<string>();
+            foreach(Room room in rooms)
+            {
+                roomNames.Add(room.Name);
+            }
+            
+
+        }
+
     }
 }

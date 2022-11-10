@@ -19,7 +19,9 @@ namespace ZorkBuilderWPF.Commands
 
         public override void Execute(object parameter)
         {
-            ZorkBuilderViewModel.Rooms.Add(new Room("New room", "description of room"));
+            ZorkBuilderViewModel.Game.World.Rooms.Add(new Room("New Room", "New room default description."));
+            ZorkBuilderViewModel.Rooms = ZorkBuilderViewModel.Game.World.Rooms;
+            ZorkBuilderViewModel.UpdateRoomNamesList();
         }
     }
 }

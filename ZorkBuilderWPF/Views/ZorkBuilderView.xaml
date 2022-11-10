@@ -39,17 +39,17 @@
 
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <Label Name="welcomeMessageLabel" Content="Welcome Message" Margin="10, 0, 10, 0"/>
-                <TextBox x:Name="welcomeMessageTextBox" Text="{Binding WelcomeMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
+                <TextBox Name="welcomeMessageTextBox" Text="{Binding WelcomeMessage, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Label Name="startingLocationLabel" Content="Starting Location" Margin="10, 0, 10, 0"/>
-                <TextBox x:Name="startingLocationTextBox" Text="{Binding StartingLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
+                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding RoomNames, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, IsAsync=True}" Margin="15, 0, 15, 5"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <Label Name="exitMessageLabel" Content="Exit Message" Margin="10, 0, 10, 0"/>
-                <TextBox x:Name="exitMessageTextbox" Text="{Binding ExitMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
+                <TextBox Name="exitMessageTextbox" Text="{Binding ExitMessage, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
             </StackPanel>
         </Grid>
 
@@ -69,7 +69,7 @@
 
                 <StackPanel Grid.Row="0">
                     <Label Name="roomsListLabel" Content="Rooms" Margin="10, 0, 10, 0"/>
-                    <ListBox Name="roomsListBox" Height="275" Margin="15, 0, 15, 0" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <ListBox Name="roomsListBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, IsAsync=True}" Height="275" Margin="15, 0, 15, 0"/>
                 </StackPanel>
 
                 <Grid Grid.Row="1">                                       <!--Add/delete button grid-->
@@ -94,9 +94,9 @@
                 <StackPanel Grid.Row="0">
                     <Label Name="roomPropertiesLabel" Content="Room Properties" Margin="10, 0, 10, 0"/>
                     <Label Name="roomNameLabel" Content="Name" Margin="10, 5, 10, 0"/>
-                    <TextBox Name="roomNameTextBox" Margin="15,0, 15, 0" Text="{Binding ElementName=roomsListBox, Path=SelectedItem.Name, Mode=TwoWay}"/>
+                    <TextBox Name="roomNameTextBox" Margin="15,0, 15, 0" Text="{Binding ElementName=roomsListBox, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label Name="roomDescriptionLabel" Content="Description" Margin="10, 10, 10, 0"/>
-                    <TextBox Name="roomDescriptionTextBox" Margin="15, 0, 15, 15" Text="{Binding ElementName=roomsListBox, Path=SelectedItem.Description, Mode=TwoWay}"/>
+                    <TextBox Name="roomDescriptionTextBox" Margin="15, 0, 15, 15" Text="{Binding ElementName=roomsListBox, Path=SelectedItem.Description, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <Separator Grid.Row="1" Margin="15, 0, 15, 0"/>

@@ -37,6 +37,11 @@ namespace ZorkBuilderWPF.Commands
                     ZorkBuilderViewModel.FilePath = openFileDialogue.FileName;
                     ZorkBuilderViewModel.FileName = System.IO.Path.GetFileName(ZorkBuilderViewModel.FilePath);
                     ZorkBuilderViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(ZorkBuilderViewModel.FilePath));
+                    ZorkBuilderViewModel.WelcomeMessage = ZorkBuilderViewModel.Game.WelcomeMessage;
+                    ZorkBuilderViewModel.ExitMessage = ZorkBuilderViewModel.Game.ExitMessage;
+                    ZorkBuilderViewModel.StartingLocation = ZorkBuilderViewModel.Game.StartingLocation;
+                    ZorkBuilderViewModel.Rooms = ZorkBuilderViewModel.Game.World.Rooms;
+                    ZorkBuilderViewModel.UpdateRoomNamesList();
                 }
                 catch(Exception ex)
                 {
