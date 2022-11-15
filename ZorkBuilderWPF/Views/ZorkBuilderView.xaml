@@ -44,7 +44,7 @@
 
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Label Name="startingLocationLabel" Content="Starting Location" Margin="10, 0, 10, 0"/>
-                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding RoomNames, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, IsAsync=True}" Margin="15, 0, 15, 5"/>
+                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding RoomNames, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValue="{Binding StartingLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 5"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="1">
@@ -79,7 +79,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="0" Name="addRoomButton" Content="Add Room" Command="{Binding AddRoomCommand}" Width="80" Margin="25, 10, 5, 10"/>
-                    <Button Grid.Column="1" Name="deleteRoomButton" Content="Delete Room" Width="80" Margin="5, 10, 25, 10"/>
+                    <Button Grid.Column="1" Name="deleteRoomButton" Content="Delete Room" Command="{Binding DeleteRoomCommand}" Width="80" Margin="5, 10, 25, 10"/>
                 </Grid>
 
             </Grid>

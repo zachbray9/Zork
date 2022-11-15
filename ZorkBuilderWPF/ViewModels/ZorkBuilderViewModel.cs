@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace ZorkBuilderWPF.ViewModels
 
             OpenCommand = new OpenCommand(this);
             AddRoomCommand = new AddRoomCommand(this);
+            DeleteRoomCommand = new DeleteRoomCommand(this);
         }
 
         private string fileName;
@@ -103,8 +105,8 @@ namespace ZorkBuilderWPF.ViewModels
             }
         }
 
-        private List<string> roomNames = new List<string>();
-        public List<string> RoomNames
+        private ObservableCollection<string> roomNames = new ObservableCollection<string>();
+        public ObservableCollection<string> RoomNames
         {
             get => roomNames;
             set
@@ -125,9 +127,14 @@ namespace ZorkBuilderWPF.ViewModels
             get;
         }
 
+        public ICommand DeleteRoomCommand
+        {
+            get;
+        }
+
         public void UpdateRoomNamesList()
         {
-            roomNames = new List<string>();
+            roomNames.Clear();
             foreach(Room room in rooms)
             {
                 roomNames.Add(room.Name);
