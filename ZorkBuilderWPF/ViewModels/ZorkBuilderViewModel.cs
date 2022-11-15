@@ -30,7 +30,7 @@ namespace ZorkBuilderWPF.ViewModels
 
             game.WelcomeMessage = "Welcome to Zork!";
             game.ExitMessage = "Thanks for playing!";
-            rooms = new List<Room>();
+            rooms = new ObservableCollection<Room>();
             //Rooms.Add(new Room("bruh room", "this is a room"));
 
             OpenCommand = new OpenCommand(this);
@@ -92,8 +92,8 @@ namespace ZorkBuilderWPF.ViewModels
             }
         }
 
-        private List<Room> rooms;
-        public List<Room> Rooms
+        private ObservableCollection<Room> rooms;
+        public ObservableCollection<Room> Rooms
         {
             //get => game.World.Rooms;
             get => rooms;

@@ -1,0 +1,44 @@
+﻿<Window x:Class="ZorkBuilderWPF.Views.AddRoomView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZorkBuilderWPF.Views"
+        mc:Ignorable="d"
+        Title="AddRoomView" Height="250" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Label Name="newRoomNameLabel" Content="Name" Margin="10, 15, 10, 0"/>
+            <TextBox Name="newRoomNameTextBox" Margin="10, 0, 10, 0" Text="{Binding NewRoomName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <Label Name="newRoomDescriptionLabel" Content="Description" Margin="10, 15, 10, 0"/>
+            <TextBox Name="newRoomDescriptionTextBox" Margin="10, 0, 10, 0" Text="{Binding NewRoomDescription, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="3" Grid.Row="1" Name="confirmAddRoomButton" Content="Add" Command="{Binding ConfirmAddRoomCommand}" Width="50" Margin="0, 0, 20, 0"/>
+            
+        </Grid>
+    </Grid>
+</Window>

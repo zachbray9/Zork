@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -39,9 +40,9 @@ namespace ZorkBuilderWPF.Commands
                     ZorkBuilderViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(ZorkBuilderViewModel.FilePath));
                     ZorkBuilderViewModel.WelcomeMessage = ZorkBuilderViewModel.Game.WelcomeMessage;
                     ZorkBuilderViewModel.ExitMessage = ZorkBuilderViewModel.Game.ExitMessage;
-                    ZorkBuilderViewModel.StartingLocation = ZorkBuilderViewModel.Game.StartingLocation;
-                    ZorkBuilderViewModel.Rooms = ZorkBuilderViewModel.Game.World.Rooms;
+                    ZorkBuilderViewModel.Rooms = new ObservableCollection<Room>(ZorkBuilderViewModel.Game.World.Rooms);
                     ZorkBuilderViewModel.UpdateRoomNamesList();
+                    ZorkBuilderViewModel.StartingLocation = ZorkBuilderViewModel.Game.StartingLocation;
                 }
                 catch(Exception ex)
                 {
