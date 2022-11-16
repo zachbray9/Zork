@@ -132,14 +132,14 @@ namespace ZorkBuilderWPF.ViewModels
             get;
         }
 
-        public void UpdateRoomNamesList()
+        public void UpdateRoomNamesList()              //only use for opening new files
         {
             roomNames.Clear();
-            foreach(Room room in rooms)
+            foreach (Room room in rooms)
             {
                 roomNames.Add(room.Name);
             }
-            
+
 
         }
 

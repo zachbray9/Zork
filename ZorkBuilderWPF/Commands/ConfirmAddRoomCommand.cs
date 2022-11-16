@@ -31,7 +31,8 @@ namespace ZorkBuilderWPF.Commands
             else
             {
                 AddRoomViewModel.ZorkBuilderViewModel.Rooms.Add(new Room(AddRoomViewModel.NewRoomName, AddRoomViewModel.NewRoomDescription));
-                AddRoomViewModel.ZorkBuilderViewModel.UpdateRoomNamesList();
+                AddRoomViewModel.ZorkBuilderViewModel.RoomNames.Add(AddRoomViewModel.NewRoomName);
+
                 AddRoomViewModel.CloseAddRoomWindowCommand.Execute();
                 
             }

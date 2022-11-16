@@ -43,6 +43,7 @@ namespace ZorkBuilderWPF.Commands
                     ZorkBuilderViewModel.Rooms = new ObservableCollection<Room>(ZorkBuilderViewModel.Game.World.Rooms);
                     ZorkBuilderViewModel.UpdateRoomNamesList();
                     ZorkBuilderViewModel.StartingLocation = ZorkBuilderViewModel.Game.StartingLocation;
+
                 }
                 catch(Exception ex)
                 {
