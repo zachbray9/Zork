@@ -27,7 +27,8 @@ namespace ZorkBuilderWPF.Commands
 
             AddRoomView addRoomView = new AddRoomView()
             {
-                DataContext = new AddRoomViewModel(ZorkBuilderViewModel)
+                DataContext = new AddRoomViewModel(ZorkBuilderViewModel),
+                Owner = App.Current.MainWindow
             };
             addRoomView.Show();
         }

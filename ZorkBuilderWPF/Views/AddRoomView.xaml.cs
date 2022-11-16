@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZorkBuilderWPF.ViewModels;
 
 namespace ZorkBuilderWPF.Views
 {
@@ -22,6 +23,18 @@ namespace ZorkBuilderWPF.Views
         public AddRoomView()
         {
             InitializeComponent();
+            Loaded += AddRoomView_Loaded;
+        }
+
+        private void AddRoomView_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is IClosable vm)
+            {
+                vm.Close += () =>
+                {
+                    this.Close();
+                };
+            }
         }
     }
 }

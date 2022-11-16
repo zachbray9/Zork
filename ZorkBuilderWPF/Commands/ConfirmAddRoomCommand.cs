@@ -24,10 +24,16 @@ namespace ZorkBuilderWPF.Commands
             {
                 MessageBox.Show("A room with this name already exists. Please enter a new name.", "Zork Builder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if(AddRoomViewModel.NewRoomName == null)
+            {
+                MessageBox.Show("Please enter a name for the new room you are trying to add.", "Zork Builder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
                 AddRoomViewModel.ZorkBuilderViewModel.Rooms.Add(new Room(AddRoomViewModel.NewRoomName, AddRoomViewModel.NewRoomDescription));
                 AddRoomViewModel.ZorkBuilderViewModel.UpdateRoomNamesList();
+                AddRoomViewModel.CloseAddRoomWindowCommand.Execute();
+                
             }
         }
     }

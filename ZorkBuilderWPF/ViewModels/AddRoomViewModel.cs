@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using ZorkBuilderWPF.Commands;
 
 namespace ZorkBuilderWPF.ViewModels
 {
-    public class AddRoomViewModel : ViewModelBase
+    public class AddRoomViewModel : ViewModelBase, IClosable
     {
         public ZorkBuilderViewModel ZorkBuilderViewModel;
 
@@ -46,5 +47,21 @@ namespace ZorkBuilderWPF.ViewModels
             get;
         }
 
+        private DelegateCommand closeAddRoomWindowCommand;
+        public DelegateCommand CloseAddRoomWindowCommand =>
+            closeAddRoomWindowCommand ?? (closeAddRoomWindowCommand = new DelegateCommand(CloseWindow));
+
+        private void CloseWindow()
+        {
+            Close?.Invoke();
+        }
+
+        public Action Close { get; set; }
+        
+    }
+
+    interface IClosable
+    {
+        Action Close { get; set; }
     }
 }
