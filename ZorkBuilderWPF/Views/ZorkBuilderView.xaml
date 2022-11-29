@@ -39,7 +39,7 @@
 
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <Label Name="welcomeMessageLabel" Content="Welcome Message" Margin="10, 0, 10, 0"/>
-                <TextBox Name="welcomeMessageTextBox" Text="{Binding WelcomeMessage, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
+                <TextBox Name="welcomeMessageTextBox" Text="{Binding WelcomeMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 5"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0">
@@ -49,7 +49,7 @@
 
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <Label Name="exitMessageLabel" Content="Exit Message" Margin="10, 0, 10, 0"/>
-                <TextBox Name="exitMessageTextbox" Text="{Binding ExitMessage, UpdateSourceTrigger=PropertyChanged}" Margin="15, 0, 15, 5"/>
+                <TextBox Name="exitMessageTextbox" Text="{Binding ExitMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 5"/>
             </StackPanel>
         </Grid>
 
@@ -69,7 +69,13 @@
 
                 <StackPanel Grid.Row="0">
                     <Label Name="roomsListLabel" Content="Rooms" Margin="10, 0, 10, 0"/>
-                    <ListBox Name="roomsListBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="275" Margin="15, 0, 15, 0"/>
+                    <ListBox Name="roomsListBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="275" Margin="15, 0, 15, 0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
 
                 <Grid Grid.Row="1">                                       <!--Add/delete button grid-->
