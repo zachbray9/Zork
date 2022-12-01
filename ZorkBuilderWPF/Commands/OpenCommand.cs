@@ -41,8 +41,8 @@ namespace ZorkBuilderWPF.Commands
                     //needed to manually set these because deserializing the game does not call OnPropertyChanged in the property setters so the UI won't update without doing this
                     ZorkBuilderViewModel.WelcomeMessage = ZorkBuilderViewModel.Game.WelcomeMessage;
                     ZorkBuilderViewModel.ExitMessage = ZorkBuilderViewModel.Game.ExitMessage;
-                    ZorkBuilderViewModel.Rooms = new ObservableCollection<Room>(ZorkBuilderViewModel.Game.World.Rooms);
                     ZorkBuilderViewModel.StartingLocation = ZorkBuilderViewModel.Game.StartingLocation;
+                    ZorkBuilderViewModel.Rooms = new ObservableCollection<Room>(ZorkBuilderViewModel.Game.World.Rooms);
                     ZorkBuilderViewModel.UpdateRoomNamesList();
                     //
 

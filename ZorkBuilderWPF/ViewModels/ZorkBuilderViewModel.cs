@@ -84,7 +84,10 @@ namespace ZorkBuilderWPF.ViewModels
 
         public string StartingLocation
         {
-            get => game.StartingLocation;
+            get
+            {
+                return game.StartingLocation;
+            }
             set
             {
                 game.StartingLocation = value;

@@ -44,7 +44,14 @@
 
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Label Name="startingLocationLabel" Content="Starting Location" Margin="10, 0, 10, 0"/>
-                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding RoomNames, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding StartingLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValue="{Binding StartingLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 5"/>
+
+                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding RoomNames, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding StartingLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, IsAsync=True}" Margin="15, 0, 15, 5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="1">
@@ -69,6 +76,7 @@
 
                 <StackPanel Grid.Row="0">
                     <Label Name="roomsListLabel" Content="Rooms" Margin="10, 0, 10, 0"/>
+                    
                     <ListBox Name="roomsListBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="275" Margin="15, 0, 15, 0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
