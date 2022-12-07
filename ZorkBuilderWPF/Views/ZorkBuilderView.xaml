@@ -132,22 +132,46 @@
                     
                     <StackPanel Grid.Column="0" Grid.Row="1">
                         <Label Name="eastNeighborLabel" Content="East" HorizontalAlignment="Center"/>
-                        <ComboBox Margin="15, 0, 15, 0"/>
+                        <ComboBox Name="eastNeighborComboBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding ElementName=roomsListBox, Path=SelectedItem.Neighbors[EAST] ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="0">
                         <Label Name="northNeighborLabel" Content="North" HorizontalAlignment="Center"/>
-                        <ComboBox Margin="15, 0, 15, 0"/>
+                        <ComboBox Name="northNeighborComboBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding ElementName=roomsListBox, Path=SelectedItem.Neighbors[NORTH] ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="2">
                         <Label Name="southNeighborLabel" Content="South" HorizontalAlignment="Center"/>
-                        <ComboBox Margin="15, 0, 15, 0"/>
+                        <ComboBox Name="southNeighborComboBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding ElementName=roomsListBox, Path=SelectedItem.Neighbors[SOUTH] ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="1">
-                        <Label Name="WestNeighborLabel" Content="West" HorizontalAlignment="Center"/>
-                        <ComboBox Margin="15, 0, 15, 0"/>
+                        <Label Name="westNeighborLabel" Content="West" HorizontalAlignment="Center"/>
+                        <ComboBox Name="westNeighborComboBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding ElementName=roomsListBox, Path=SelectedItem.Neighbors[WEST] ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
 
                 </Grid>

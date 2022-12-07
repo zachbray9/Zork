@@ -8,11 +8,13 @@ using System.Windows.Input;
 using Zork.Common;
 using ZorkBuilderWPF.Commands;
 
+
 namespace ZorkBuilderWPF.ViewModels
 {
     public class ZorkBuilderViewModel : ViewModelBase
     {
         private Game game;
+        
         public Game Game
         {
             get => game;
