@@ -31,7 +31,6 @@ namespace ZorkBuilderWPF.ViewModels
             game.WelcomeMessage = "Welcome to Zork!";
             game.ExitMessage = "Thanks for playing!";
             rooms = new ObservableCollection<Room>();
-            //Rooms.Add(new Room("bruh room", "this is a room"));
 
             OpenCommand = new OpenCommand(this);
             AddRoomCommand = new AddRoomCommand(this);
@@ -82,15 +81,18 @@ namespace ZorkBuilderWPF.ViewModels
             }
         }
 
-        public string StartingLocation
+        private Room startingLocation;
+        public Room StartingLocation
         {
             get
             {
-                return game.StartingLocation;
+                return startingLocation;
             }
             set
             {
-                game.StartingLocation = value;
+                startingLocation = value;
+                //Starting location needs to be serialized as a string, but used as a room in the program
+                Game.StartingLocation = value.ToString();
                 OnPropertyChanged(nameof(StartingLocation));
             }
         }
@@ -137,11 +139,6 @@ namespace ZorkBuilderWPF.ViewModels
 
         public void UpdateRoomNamesList()              //only use for opening new files
         {
-            //roomNames.Clear();
-            //foreach (Room room in rooms)
-            //{
-            //    roomNames.Add(room.Name);
-            //}
 
             for(int i = 0; i < rooms.Count; i++)
             {
@@ -155,7 +152,17 @@ namespace ZorkBuilderWPF.ViewModels
                 }
             }
 
+        }
 
+        public Room ChangeStringToRoom(string inputString)
+        {
+            for(int i = 0; i < Rooms.Count; i++)
+            {
+                if (Rooms[i].Name == inputString)
+                    return Rooms[i];
+            }
+
+            return null;
         }
 
     }

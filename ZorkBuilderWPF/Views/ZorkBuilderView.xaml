@@ -45,10 +45,10 @@
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Label Name="startingLocationLabel" Content="Starting Location" Margin="10, 0, 10, 0"/>
 
-                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding RoomNames, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding StartingLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, IsAsync=True}" Margin="15, 0, 15, 5">
+                <ComboBox Name="startingLocationComboBox" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding StartingLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="15, 0, 15, 5">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}"/>
+                            <TextBlock Text="{Binding Path=Name}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
