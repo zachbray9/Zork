@@ -19,7 +19,6 @@ namespace ZorkBuilderWPF.ViewModels
             set
             {
                 game = value;
-                //OnPropertyChanged(nameof(Game));
             }
         }
 
@@ -100,27 +99,13 @@ namespace ZorkBuilderWPF.ViewModels
         private ObservableCollection<Room> rooms;
         public ObservableCollection<Room> Rooms
         {
-            //get => game.World.Rooms;
             get => rooms;
             set
             {
-                //game.World.Rooms = value;
                 rooms = value;
                 OnPropertyChanged(nameof(Rooms));
             }
         }
-
-        private ObservableCollection<string> roomNames = new ObservableCollection<string>();
-        public ObservableCollection<string> RoomNames
-        {
-            get => roomNames;
-            set
-            {
-                roomNames = value;
-                OnPropertyChanged(nameof(RoomNames));
-            }
-        }
-
 
         public ICommand OpenCommand
         {
@@ -135,23 +120,6 @@ namespace ZorkBuilderWPF.ViewModels
         public ICommand DeleteRoomCommand
         {
             get;
-        }
-
-        public void UpdateRoomNamesList()              //only use for opening new files
-        {
-
-            for(int i = 0; i < rooms.Count; i++)
-            {
-                try
-                {
-                    roomNames[i] = rooms[i].Name;
-                }
-                catch(Exception ex)
-                {
-                    roomNames.Add(rooms[i].Name);
-                }
-            }
-
         }
 
         public Room ChangeStringToRoom(string inputString)

@@ -23,7 +23,7 @@ namespace ZorkBuilderWPF.Commands
         {
             //ZorkBuilderViewModel.Game.World.Rooms.Add(new Room("New Room", "New room default description."));
             //ZorkBuilderViewModel.Rooms = new ObservableCollection<Room>(ZorkBuilderViewModel.Game.World.Rooms);
-            //ZorkBuilderViewModel.UpdateRoomNamesList();
+            
 
             AddRoomView addRoomView = new AddRoomView()
             {

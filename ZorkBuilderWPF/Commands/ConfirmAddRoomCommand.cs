@@ -20,7 +20,7 @@ namespace ZorkBuilderWPF.Commands
 
         public override void Execute(object parameter)
         {
-            if (AddRoomViewModel.ZorkBuilderViewModel.RoomNames.Contains(AddRoomViewModel.NewRoomName))
+            if (AddRoomViewModel.ZorkBuilderViewModel.Rooms.Contains(AddRoomViewModel.ZorkBuilderViewModel.ChangeStringToRoom(AddRoomViewModel.NewRoomName)))
             {
                 MessageBox.Show("A room with this name already exists. Please enter a new name.", "Zork Builder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -31,8 +31,6 @@ namespace ZorkBuilderWPF.Commands
             else
             {
                 AddRoomViewModel.ZorkBuilderViewModel.Rooms.Add(new Room(AddRoomViewModel.NewRoomName, AddRoomViewModel.NewRoomDescription));
-                AddRoomViewModel.ZorkBuilderViewModel.RoomNames.Add(AddRoomViewModel.NewRoomName);
-
                 AddRoomViewModel.CloseAddRoomWindowCommand.Execute();
                 
             }

@@ -43,7 +43,6 @@ namespace ZorkBuilderWPF.Commands
                     ZorkBuilderViewModel.ExitMessage = ZorkBuilderViewModel.Game.ExitMessage;
                         //Rooms list needs to be set before startinglocation because using ChangeStringToRoom() requires the rooms list to be filled
                     ZorkBuilderViewModel.Rooms = new ObservableCollection<Room>(ZorkBuilderViewModel.Game.World.Rooms);
-                    ZorkBuilderViewModel.UpdateRoomNamesList();
                         //Switches the string to a Room because starting location deserializes as a string and we need it to be a room for the Rooms List (need to change it back to a string upon serializing)
                     ZorkBuilderViewModel.StartingLocation = ZorkBuilderViewModel.ChangeStringToRoom(ZorkBuilderViewModel.Game.StartingLocation);
                     //
