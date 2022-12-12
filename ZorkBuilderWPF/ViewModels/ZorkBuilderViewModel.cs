@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +38,9 @@ namespace ZorkBuilderWPF.ViewModels
             OpenCommand = new OpenCommand(this);
             AddRoomCommand = new AddRoomCommand(this);
             DeleteRoomCommand = new DeleteRoomCommand(this);
+            SaveCommand = new SaveCommand(this);
+            SaveAsCommand = new SaveAsCommand(this);
+            ExitCommand = new ExitCommand();
         }
 
         private string fileName;
@@ -93,7 +98,7 @@ namespace ZorkBuilderWPF.ViewModels
             {
                 startingLocation = value;
                 //Starting location needs to be serialized as a string, but used as a room in the program
-                Game.StartingLocation = value.ToString();
+                //Game.StartingLocation = value.ToString();
                 OnPropertyChanged(nameof(StartingLocation));
             }
         }
@@ -124,6 +129,21 @@ namespace ZorkBuilderWPF.ViewModels
             get;
         }
 
+        public ICommand SaveCommand
+        {
+            get;
+        }
+
+        public ICommand SaveAsCommand
+        {
+            get;
+        }
+
+        public ICommand ExitCommand
+        {
+            get;
+        }
+
         public Room ChangeStringToRoom(string inputString)
         {
             for(int i = 0; i < Rooms.Count; i++)
@@ -133,6 +153,25 @@ namespace ZorkBuilderWPF.ViewModels
             }
 
             return null;
+        }
+
+        public void SaveGame()
+        {
+            Game.StartingLocation = startingLocation.ToString();
+            //converts the Rooms observable collection from the ZorkBuilderViewModel to a list in the ZorkBuilderViewModel.Game.World class and adds the names of the neighbors of each room to their NeighborNames list since they must be strings for serialization
+            Game.World.Rooms = Rooms.ToList();
+            foreach (Room room in Game.World.Rooms)
+            {
+                var Keys = room.Neighbors.Keys.ToList();
+                foreach (var key in Keys)
+                {
+                    room.NeighborNames[key] = room.Neighbors[key].ToString();
+                }
+            }
+            //
+
+            string jsonString = JsonConvert.SerializeObject(Game, Formatting.Indented);
+            File.WriteAllText(filePath, jsonString);
         }
 
     }
