@@ -40,7 +40,7 @@ namespace ZorkBuilderWPF.ViewModels
             DeleteRoomCommand = new DeleteRoomCommand(this);
             SaveCommand = new SaveCommand(this);
             SaveAsCommand = new SaveAsCommand(this);
-            ExitCommand = new ExitCommand();
+            ExitCommand = new ExitCommand(this);
         }
 
         private string fileName;
@@ -172,6 +172,7 @@ namespace ZorkBuilderWPF.ViewModels
 
             string jsonString = JsonConvert.SerializeObject(Game, Formatting.Indented);
             File.WriteAllText(filePath, jsonString);
+            ChangesWereMade = false;
         }
 
     }
