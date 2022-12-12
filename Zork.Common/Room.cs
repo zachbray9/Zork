@@ -21,6 +21,10 @@ namespace Zork.Common
         {
             Name = name;
             Description = description;
+
+            //added because when adding a new room in zorkbuilder, you couldn't assign neighbors since the UpdateNeighbors function wasn't called upon instantiating a new room
+            Neighbors = new Dictionary<Directions, Room>();
+            //
         }
 
 
