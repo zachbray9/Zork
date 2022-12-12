@@ -93,7 +93,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="0" Name="addRoomButton" Content="Add Room" Command="{Binding AddRoomCommand}" Width="80" Margin="25, 10, 5, 10"/>
-                    <Button Grid.Column="1" Name="deleteRoomButton" Content="Delete Room" Command="{Binding DeleteRoomCommand}" Width="80" Margin="5, 10, 25, 10"/>
+                    <Button Grid.Column="1" Name="deleteRoomButton" Content="Delete Room" Command="{Binding DeleteRoomCommand}" CommandParameter="{Binding ElementName=roomsListBox, Path=SelectedItem}" Width="80" Margin="5, 10, 25, 10"/>
                 </Grid>
 
             </Grid>
