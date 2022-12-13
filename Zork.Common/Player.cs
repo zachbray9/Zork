@@ -34,14 +34,14 @@ namespace Zork.Common
 
         public bool Move(Directions direction)
         {
-            //if (CurrentRoom == CurrentRoom.Neighbors[direction])                                 //returns false if the neighbor you are trying to go to is the current room. (Zork builder neighbors combo box does not allow for an empty option)
-            //    return false;
 
             bool isValidMove = CurrentRoom.Neighbors.TryGetValue(direction, out Room neighbor);
             if(isValidMove)
             {
+                //returns false if the neighbor you are trying to go to is the current room. (Zork builder neighbors combo box does not allow for an empty option)
                 if (CurrentRoom == CurrentRoom.Neighbors[direction])
                     return false;
+                //
 
                 CurrentRoom = neighbor;
             }
