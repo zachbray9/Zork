@@ -3,10 +3,8 @@ using System.ComponentModel;
 
 namespace Zork.Common
 {
-    public class Player //: INotifyPropertyChanged
+    public class Player
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
-
         public World World { get; }
 
         [JsonIgnore]

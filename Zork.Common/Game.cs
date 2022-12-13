@@ -6,11 +6,8 @@ using Newtonsoft.Json;
 
 namespace Zork.Common
 {
-    public class Game //: INotifyPropertyChanged
+    public class Game
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-
         [JsonIgnore]
         public IInputService Input { get; private set; }
 
@@ -53,14 +50,12 @@ namespace Zork.Common
 
         public static void StartGame(string jsonString, IInputService input, IOutputService output)
         {
-            //game = JsonConvert.DeserializeObject<Game>(jsonString);
             Instance = Load(jsonString);
             Instance.IsRunning = true;
             Instance.Input = input;
             Instance.Output = output;
             Instance.DisplayWelcomeMessage();
             Instance.Input.InputReceived += Instance.InputReceivedHandler;
-            //Instance.Run();
         }
         public static Game Load(string jsonString)
         {

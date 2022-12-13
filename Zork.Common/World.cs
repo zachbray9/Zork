@@ -5,19 +5,17 @@ using Newtonsoft.Json;
 
 namespace Zork.Common
 {
-    public class World //: INotifyPropertyChanged
+    public class World
     {
-       //public event PropertyChangedEventHandler PropertyChanged;
-
         public World()
         {
-            Rooms = new List<Room>();                                //added this in zorkbuilder wpf because initializing a new game did not initalize a world or the rooms list in the world
+            //added this in zorkbuilder wpf because initializing a new game did not initalize a world or the rooms list in the world
+            Rooms = new List<Room>();                               
         }
 
-        //public Room[] Rooms { get; set; }
         public List<Room> Rooms { get; set; }
 
-        [JsonIgnore]  //added because saving in zork builder was serializing the RoomsByName list
+        [JsonIgnore]
         public Dictionary<string, Room> RoomsByName { get; private set; }  
 
 

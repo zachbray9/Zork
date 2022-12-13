@@ -4,11 +4,9 @@ using System.ComponentModel;
 
 namespace Zork.Common
 {
-    public class Room //: INotifyPropertyChanged
+    public class Room
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        public string Name { get; set; } //Added a setter for add player form
+        public string Name { get; set; }
         public string Description { get; set; }
 
         [JsonIgnore]
