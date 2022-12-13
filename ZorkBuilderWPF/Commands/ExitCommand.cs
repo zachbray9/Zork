@@ -1,10 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using ZorkBuilderWPF.ViewModels;
 
@@ -45,11 +41,11 @@ namespace ZorkBuilderWPF.Commands
                             ZorkBuilderViewModel.SaveGame();
                         }
                     }
-                    Application.Current.Shutdown();
+                    Environment.Exit(0);
                 }
                 else if(messageBoxResult == MessageBoxResult.No)
                 {
-                    Application.Current.Shutdown();
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -58,7 +54,7 @@ namespace ZorkBuilderWPF.Commands
             }
             else
             {
-                Application.Current.Shutdown();
+                Environment.Exit(0);
             }
         }
     }

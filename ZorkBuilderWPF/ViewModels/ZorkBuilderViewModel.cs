@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Zork.Common;
 using ZorkBuilderWPF.Commands;
@@ -28,6 +24,8 @@ namespace ZorkBuilderWPF.ViewModels
 
         public ZorkBuilderViewModel()
         {
+            ChangesWereMade = false;
+
             game = new Game();
             game.World = new World();
 
@@ -97,8 +95,6 @@ namespace ZorkBuilderWPF.ViewModels
             set
             {
                 startingLocation = value;
-                //Starting location needs to be serialized as a string, but used as a room in the program
-                //Game.StartingLocation = value.ToString();
                 OnPropertyChanged(nameof(StartingLocation));
             }
         }
