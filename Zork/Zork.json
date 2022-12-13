@@ -49,7 +49,7 @@
         "Description": "This is a dimly lit forest, with large trees all around. One particularly large tree with some low branches stands here.",
         "Neighbors": {
           "SOUTH": "Clearing",
-          "EAST": "Clearing"
+          "EAST": "Forest 1"
         }
       },
       {
