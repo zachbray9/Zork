@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.x
+          dotnet-version: 5.x
 
       - run: dotnet restore "${{ env.PROJECT_PATH }}"
 
